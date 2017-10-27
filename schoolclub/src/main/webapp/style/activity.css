@@ -1,0 +1,121 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0;
+    padding:0;
+}
+body{
+	font-family:"微软雅黑";
+	background-color:#EEE;
+}
+.pagecut{
+	width:1200px;
+	height:100px;
+	line-height:35px;
+	margin:0 auto;
+	padding-bottom:40px;
+	background-color:white;
+	color:#666;
+	font-family:"微软雅黑";
+}
+.pagecut ul{
+	width:500px;
+	margin-left:auto;
+	margin-right:auto;
+	list-style:none;
+	overflow:hidden;
+}
+.pagecut ul li{
+	display:inline;
+	float:left;
+	margin-left:25px;
+	padding-left:8px;
+	padding-right:8px;
+	border:1px solid #CCC;
+}
+.pagecut ul li:hover{
+	background-color:#FC6;
+	cursor:pointer;
+}
+#activity{
+	width: 1200px;
+	height: auto;
+	margin-top: 0;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #fff;
+	margin-bottom: 0px;
+}
+#activity .title{
+	height:50px;
+	color:#333;
+	margin:0 auto auto 15px;
+	padding-top:50px;
+	color:#5F5F5F;
+	font-size:25px;
+	text-align:center;
+	line-height:50px;
+}
+#activity .title:before{
+	position:absolute;
+	content:url(../p/source/%E6%8A%95%E7%A8%BF%E5%89%8D.png);
+	left:650px;
+}
+#activity ul{
+	width:1150px;
+	margin:0 auto;
+	overflow:hidden; /*解决浮动坍塌*/
+}
+#activity .activity{
+	position:relative;
+	list-style:none;
+	width:270px;
+	height:470px;
+	float:left;
+	display:inline-block;
+	margin:50px 17px 30px 0;
+	-webkit-transition: all 0.5s ease; /* 过渡 */
+   -moz-transition: all 0.5s ease;
+   -ms-transition: all 0.5s ease;
+   -o-transition: all 0.5s ease;
+   transition: all 0.5s ease;
+}
+#activity .activity:hover{
+	-webkit-box-shadow:0 0 3px #888888; /* 过渡 */
+    -moz-box-shadow:0 0 3px #888888;
+    -ms-box-shadow:0 0 3px #888888;
+    -o-box-shadow:0 0 3px #888888;
+    box-shadow:0 0 3px #888888;
+    background-color:rgba(239,243,245,0.5)
+}
+
+#activity .activity img{
+	position:relative;
+	margin-left:15px;
+	margin-top:15px;
+	-webkit-transition: all 0.5s ease; /* 过渡 */
+   -moz-transition: all 0.5s ease;
+   -ms-transition: all 0.5s ease;
+   -o-transition: all 0.5s ease;
+   transition: all 0.5s ease;
+	
+}
+#activity .activity h3{
+	display:inline-block;
+	margin-left:20px;
+	margin-bottom:5px
+}
+#activity .activity p{
+	display:inline-block;
+	margin-left:20px;
+	margin-top:0;
+	margin-bottom:3px;
+}
+	
+#activity .activity:hover img{
+   -webkit-transform:scale(1.05); /* Safari Chrome*/
+   -moz-transform:scale(1.05); /* Firefox */
+   -ms-transform: scale(1.05); /* IE */
+   -o-transform: scale(1.05); /* Opera */
+   transform:scale(1.05); /* 标准语法 */
+}

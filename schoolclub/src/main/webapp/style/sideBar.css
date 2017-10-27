@@ -1,0 +1,120 @@
+#leftBar{
+    width:140px;
+    height:550px;
+    position: absolute;
+    top:600px;
+    left: 15px;
+//    border: 1px solid #000000;
+    background: url("../p/source/leftBar.png") no-repeat;
+}
+#rightBar{
+    width: 52px;
+    height: 216px;
+    border: 1px solid #ccc;
+    left: 1380px;
+    top: 600px;
+    position: absolute;
+}
+#rightBar ul{
+    list-style: none;
+}
+#rightBar ul li{
+    width: 48px;
+    display: block;
+    height: 50px;
+    padding: 2px;
+ //   border: 1px solid #000000;
+    overflow: hidden
+}
+#rightBar ul .weixin{
+    background: url(../p/source/elevator.png) no-repeat;
+    background-position: 0 87%;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+#rightBar ul .weixin:hover{
+    background-position: 0 93%
+}
+#rightBar ul .weixin .weixin-logo {
+    background: url(../p/source/elevator.png) no-repeat;
+    background-position: 0 0;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    position: absolute;
+    top: -154px;
+    left: -171px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+
+#rightBar ul .weixin:hover .weixin-logo{
+    width: 170px;
+    height: 204px;
+}
+#rightBar ul .suggestion {
+
+    background: url(../p/source/elevator.png) no-repeat;
+    background-position: 0 43%;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+
+#rightBar ul .suggestion:hover {
+    background-position: 0 49%;
+}
+
+#rightBar ul .app {
+    background: url(../p/source/elevator.png) no-repeat;
+    background-position: 0 55%;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+#rightBar ul .app .app-logo {
+
+    background: url(../p/source/elevator.png) no-repeat;
+    background-position: 0 26%;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    position: absolute;
+    top: -18px;
+    left: -171px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+
+#rightBar ul .app:hover {
+    background-position: 0 61%;
+}
+
+#rightBar ul .app:hover .app-logo {
+    width: 170px;
+    height: 185px;
+}
+#rightBar ul .returnTop{
+    width: 48px;
+    height: 50px;
+    display:block;
+    vertical-align: baseline;
+ //  border:1px solid red;
+    background: url(../p/source/elevator.png) no-repeat;
+    background-position: 0 67%;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+#rightBar ul .returnTop:hover{
+    background-position: 0 73%;
+}

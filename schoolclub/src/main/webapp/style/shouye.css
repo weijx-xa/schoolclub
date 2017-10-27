@@ -1,0 +1,384 @@
+#head2{
+    margin:0;
+    height:550px;
+}
+#lianxiwomen{
+    margin:0;
+    height:240px;
+}
+*{
+    margin:0;
+    padding:0;
+    background-color: #EEEEEE;
+}
+.content{
+    width:1200px;
+    height:1750px;
+ //   border: 1px solid #000;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+#headline{
+    width:1200px;
+    height:500px;
+    margin: 0 auto;
+//    border: 1px solid #000;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+.title{
+    position: relative;
+//      border: 1px solid #000;
+    background-color: #ffffff;
+    margin-top: 30px;
+}
+.title img{
+    width:250px;
+    height: 92px;
+//    border: 1px solid #000;
+    margin-left: 450px;
+}
+.headline-pic{
+    width:1100px;
+    height:450px;
+    border-bottom: 1px solid #666666;
+    background-color: #ffffff;
+    margin: 15px auto;
+}
+.lunbo{
+    width:500px;
+    height:330px;
+//    border: 1px solid #000;
+    margin:30px 20px 20px 20px;
+    background-color: white;
+}
+ #po {
+    width: 500px;
+    overflow: hidden;
+    height: 330px;
+//border: solid 1px #000000;
+    left: 0px;;
+    top: 0px;
+//position: relative;
+}
+#lunbobg{
+    width:500px;
+    padding-top:1px;
+    background-color:rgb(244,200,33);
+    opacity: 0.8;
+    height:31.5px;
+    left:229.5px;
+    FONT-WEIGHT: bold;
+    top:1005px;
+    position:absolute;
+}
+ #num {
+    width: 300px;
+    height: 30px;
+    position: absolute;
+    z-index: 2;
+    left: 380px;
+    top: 1005px;
+     background-color: rgba(255,255,255,0);
+}
+
+#num a {
+    text-decoration: none;
+    width: 30px;
+    height:30px;
+    font-size: 14px;
+    margin-right: 6px;
+    display: inline;
+    line-height: 33px;
+    float: left;
+    text-align: center;
+    color: #000;
+    background-color: rgba(255,255,255,0);
+    font-family: "微软雅黑";
+}
+#num a:hover{
+    background-color:rgba(255,255,255,0.8) ;
+    -moz-border-radius:5px;
+    border-radius: 5px;
+}
+#pol img {
+    width: 500px;
+    height: 330px;
+    float: left
+}
+.headline-text{
+    width:500px;
+    height:330px;
+  //   border: 1px solid #000;
+    position: absolute;
+    left:780px;
+    top:710px;
+    background-color: #ffffff;
+}
+.headline-text ul{
+    background-color: #ffffff;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    color:#333333;
+//     border: 1px solid #000;
+}
+.headline-text ul li{
+    list-style: none;
+    background-color: #ffffff;
+    margin-bottom: 15px;
+}
+.headline-text ul li:before{
+    content: "";
+    display: inline-block;
+    width:15px;
+    height:15px;
+    margin:3px 15px 0 0;
+    border-radius: 50%;
+    background-color:rgb(244,200,33);
+}
+#club{
+    height:470px;
+    margin-top:10px;
+    margin-bottom: 30px;
+  //  border: 1px solid #000;
+    background-color:#ffffff;
+}
+.club-show{
+    list-style: none;
+    width:1000px;
+    height:250px;
+ //   border: 1px solid #000000;
+    background-color: #ffffff;
+    margin: 10px auto;
+}
+.club-show li{
+    float:left;
+    margin-left:40px;
+    margin-right: 40px;
+    background-color: #ffffff;
+}
+.club-show li a.club{
+    display: block;
+    width:152px;
+    height:152px;
+    border:7px solid #7D4B83;;
+    -webkit-border-radius: 50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    background: no-repeat center;
+    background-size: cover;
+    position: relative;
+    z-index: auto;
+    overflow: visible;
+    -webkit-transition: all 0.4s ease-in 0.3s ;
+    -moz-transition:  all 0.4s ease-in 0.3s;
+}
+.club-show li a.club.pic1{
+    background-image: url("../p/club/club3.png");
+}
+.club-show li a.club.pic2{
+    background-image: url("../p/club/club3.png");
+}
+.club-show li a.club.pic3{
+    background-image: url("../p/club/club3.png");
+}
+.club-show li a.club.pic4{
+    background-image: url("../p/club/club3.png");
+}
+.club-show li .text {
+    width: 152px;
+    height: 152px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+  //  border: 1px solid #000;
+    z-index: 0;
+    background-color: #000;
+    color: #fff;
+    font-weight: 800;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    transition: all 0.2s ease-in 0.2s;
+    -webkit-transition: all 0.2s ease-in 0.2s ;
+    -moz-transition:  all 0.2s ease-in 0.2s;
+}
+a.club:hover .text{
+    opacity: 0.6;
+}
+.smallTitle,
+.address {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+//       border: 1px solid red;
+    line-height: 30px;
+    margin: 0 auto;
+    font-family: "微软雅黑";
+    font-size: 15px;
+    background-color: #000;
+    opacity: 0.6;
+}
+.smallTitle:hover,
+.address:hover{
+    cursor: pointer;
+}
+.smallTitle{
+    margin-top: 40px;
+}
+.footer-text{
+    font-family: "微软雅黑";
+    background-color: #ffffff;
+}
+.footer-text a{
+    text-decoration: none;
+    color:#000000;
+    background-color: #ffffff;
+}
+.footer-text .clubtitle{
+    width:150px;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+//    border:1px solid #000000;
+    background-color: #ffffff;
+    margin-top: 5px;
+}
+.footer-text .follow{
+    display: block;
+    color:#666;
+    width:120px;
+    height: 32px;
+    text-align: right;
+  //  border:1px solid #000000;
+    background-color: #ffffff;
+    margin-top: 5px;
+    background: url("../p/source/followbefore.png") no-repeat;
+    background-position: 55px 0px;
+}
+.club  li:hover .follow{
+    cursor:pointer;
+}
+.Club-button {
+    width:180px;
+    height:30px;
+    background-color:#F5CD37;
+    padding:5px;
+    margin:0 auto;
+    position:relative;
+    font-family:"微软雅黑";
+    font-size:20px;
+    font-weight:bold;
+    text-decoration:none;
+    color:#fff;
+    -webkit-box-shadow: 0px 6px 0px #F39C0C; /* 阴影 */
+    -moz-box-shadow:0px 6px 0px #F39C0C;
+    -ms-box-shadow:0px 6px 0px #F39C0C;
+    -o-box-shadow:0px 6px 0px #F39C0C;
+    box-shadow:0px 6px 0px #F39C0C;
+    border-radius: 5px;
+}
+.Club-button a{
+    text-decoration:none;
+    color:#666;
+    margin-left:40px;
+    background-color:rgba(255,255,255,0);
+}
+.Club-button a:before{
+    content:url(../p/source/check.png);
+    position:absolute;
+    left:10px;
+    top:5px;
+}
+.Club-button:active {
+    top:7px;
+    color: #000;
+    text-shadow: 0px 1px 1px rgba(255,255,255,0.3);
+    background:#F39C0C;;
+}
+.Club-button:active::before{
+    top:-1px;
+}
+#activity{
+    width:1200px;
+    height:530px;
+//     border: 1px solid #000000;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:50px;
+    background-color:#fff;
+    font-family: "微软雅黑";
+}
+#activity .activity1{
+    width:1100px;
+//    border: 1px solid #000000;
+    overflow:hidden;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:#fff;
+}
+#activity ul{
+    width:1100px;
+    margin-bottom:25px;
+    margin-left:auto;
+    margin-right:auto;
+    overflow:hidden; /*解决浮动坍塌*/
+    background-color:#fff;
+}
+#activity .activity{
+    position:relative;
+    list-style:none;
+    width:280px;
+    height:470px;
+    float:left;
+    display:inline-block;
+    margin:15px 30px 30px 40px;
+    background-color:#fff;
+
+}
+#activity .activity:hover{
+    -webkit-box-shadow:0 0 3px #888888; /* 过渡 */
+    -moz-box-shadow:0 0 3px #888888;
+    -ms-box-shadow:0 0 3px #888888;
+    -o-box-shadow:0 0 3px #888888;
+    box-shadow:0 0 3px #888888;
+    background-color:rgba(239,243,245,0.5)
+}
+#activity .activity a{
+    display: inline-block;
+    background-color:#ffffff;
+}
+#activity .activity img{
+    position:relative;
+    margin-left:20px;
+    margin-top:15px;
+    -webkit-transition: all 0.5s ease; /* 过渡 */
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+}
+#activity .activity h3{
+    display:inline-block;
+    margin-top: 10px;
+    margin-left:20px;
+    margin-bottom:5px;
+    background-color:rgba(255,255,255,0);
+}
+#activity .activity p{
+    display:inline-block;
+    margin-left:20px;
+    margin-top:0;
+    margin-bottom:3px;
+    background-color:rgba(255,255,255,0);
+}
+
+#activity .activity:hover img{
+    -webkit-transform:scale(1.05); /* Safari Chrome*/
+    -moz-transform:scale(1.05); /* Firefox */
+    -ms-transform: scale(1.05); /* IE */
+    -o-transform: scale(1.05); /* Opera */
+    transform:scale(1.05); /* 标准语法 */
+}
