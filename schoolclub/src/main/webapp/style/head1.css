@@ -18,7 +18,7 @@
 	background-color:#4D4D4D ;
 	color: #eeeeee;
 }
-.header a:nth-child(1){
+.header #setUpClub{
 	display: inline-block;
 	width:80px;
 	height:20px;
@@ -26,6 +26,26 @@
 	background-image: url("../p/source/大+.png");
 	background-repeat: no-repeat;
 	background-position: 15% 100%;
+}
+#unprocessedMessageWrapper{
+	position: absolute;
+	width:150px;
+	height:40px;
+//    border: 1px solid red;
+	right:0;
+	top:30px;
+	border: 1px solid #4D4D4D;
+	border-top: none;
+	background: #FFFFFF;
+//  display: none;
+}
+#unprocessedMessageWrapper a{
+	width:150px;
+	height:40px;
+	text-align: center;
+	line-height: 40px;
+	background: #FFFFFF;
+	color: #111111;
 }
 #nav {
 	background-color: white;

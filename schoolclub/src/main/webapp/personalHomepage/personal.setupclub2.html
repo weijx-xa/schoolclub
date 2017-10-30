@@ -6,6 +6,7 @@
     <script src="js/jquery-1.8.3.js"></script>
     <link rel="stylesheet" type="text/css" href="../style/lianxiwomen.css" />
     <link rel="stylesheet" type="text/css" href="../style/personal.css" />
+    <link type="text/css" href="../style/setupclub.css" rel="stylesheet" />
     <script>
         <!--菜单样式-->
         $(document).ready(function(){
@@ -56,38 +57,9 @@
             width:430px;
             padding-bottom: 100px;
         }
-        #info ul #clubpic .defaultpic{
-            border:1px solid #dbdbdb;
+        #info ul #clubpic{
+            height:135px;
             position: relative;
-            z-index: 100;
-        }
-        #info ul #clubpic .defaultpic:before,
-        #info ul #clubpic .defaultpic:after{
-            width:97px;
-            height: 135px;
-            position: absolute;
-            content: "";
-            border:1px solid #dbdbdb;
-            display: block;
-            left: -1px;
-        }
-        #info ul #clubpic .defaultpic:before{
-            -webkit-transform: rotate(-3deg); /* Safari Chrome*/
-            -moz-transform: rotate(-3deg); /* Firefox */
-            -ms-transform: rotate(-3deg); /* IE */
-            -o-transform: rotate(-3deg); /* Opera */
-            transform: rotate(-3deg); /* 标准语法 */
-            margin-top: 0;
-            z-index: 1
-        }
-        #info ul #clubpic .defaultpic:after{
-            -webkit-transform: rotate(2deg); /* Safari Chrome*/
-            -moz-transform: rotate(2deg); /* Firefox */
-            -ms-transform: rotate(2deg); /* IE */
-            -o-transform: rotate(2deg); /* Opera */
-            transform: rotate(2deg); /* 标准语法 */
-            margin-top: -137px;
-            z-index: 2
         }
         #info ul #clubpic .uploadpic{
             position: absolute;
@@ -95,17 +67,15 @@
             height: 135px;
             background-color:#f9f9f9;
             border:1px dashed #dbdbdb;
-            margin-left: 60px;
-            margin-top: 2px;
-            background-image: url("p/source/yellow+.png");
+            background-image: url("../p/source/yellow+.png");
             background-repeat: no-repeat;
             background-position: center;
         }
         #info ul #clubpic p{
             font-size: 12px;
             color:rgb(105,57,111);
-            margin-left: 280px;
-            margin-top: 10px;
+            margin-left: 360px;
+            margin-top: 40px;
         }
         #prevstep{
             position: absolute;
@@ -118,11 +88,28 @@
             margin-left: 1250px;
         }
     </style>
-    <link type="text/css" href="style/setupclub.css" rel="stylesheet" />
+
 </head>
 <body>
-<div id="head1">
-    <iframe height="550px" width="100%" src="smallPage/head1.html" scrolling="no" frameborder="0"></iframe>
+<div id="header1">
+    <div>
+        <a style="color: #eeeeee" href="#">返回首页</a>
+        <a style="color: #eeeeee" href="./login/login.html">登陆</a>
+        <span style="color: #eeeeee">/</span>
+        <a style="color: #eeeeee" href="register.html">注册</a>
+    </div>
+</div>
+<div id="header2">
+    <div id="logo">
+        SchoolClub
+    </div>
+    <div id="navilist">
+        <ul>
+            <li><a href="personal.info.html">个人资料</a> </li>
+            <li>个人中心</li>
+            <li><a href="#">消息通知</a></li>
+        </ul>
+    </div>
 </div>
     <div id="info">
         <h3 class="title">主页资料</h3>
@@ -138,17 +125,16 @@
             </li>
             <li id="clubpic">
                 <span class="lititle">社团风采</span>
-                <span class="defaultpic"><img src="p/source/default-pic.jpg"/></span>
                 <span class="uploadpic"></span>
                 <p>*为了更好的展示效果建议上传540*400比例的jpg或png格式图片</p>
             </li>
         </ul>
     </div>
     <div id="prevstep">
-        <a href="personal.setupclub.html#"><img src="p/source/prev-step.png"/></a>
+        <a href="personal.setupclub.html#"><img src="../p/source/prev-step.png"/></a>
     </div>
     <div id="nextstep">
-        <a href="#"><img src="p/source/nextstep-submit.png"/></a>
+        <a href="#"><img src="../p/source/nextstep-submit.png"/></a>
     </div>
 <div id="lianxiwomen">
     <div id="zhizuoren">

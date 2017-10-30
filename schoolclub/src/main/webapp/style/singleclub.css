@@ -83,31 +83,36 @@ body{
 	text-align: center;
 }
 .text span{
-	display: inline-block;
+	display: block;
 	font-size: 18px;
-	margin: 0;
 	padding: 5px;
 	cursor: pointer;
+	width:150px;
+	height:30px;
+	line-height: 30px;
+	text-align: center;
+//	border: 1px solid red;
+	margin: 0 auto;
 }
 .text .follow{
-
+	margin-top: 5px;
+	position: relative;
 }
-.text .follow:before{
-	content:url(../p/source/followbefore.png);
-	position:absolute;
-	left:98px;
-}
-.text .push:before{
-	content:url(../p/source/push.png);
+.text .follow i{
+	width:30px;
+	height:30px;
+//	border: 1px solid yellow;
 	position: absolute;
-	left:98px;
+	top:5px;
+	left:25px;
+	background: url("../p/source/followbefore.png") no-repeat;
 }
 .text .join{
-	width:90px;
-	height:15px;
-	line-height: 15px;
+	width:100px;
+	height:25px;
+	line-height: 25px;
 	margin-top: 5px;
-	border:2px solid #fce075;
+	border: none;
 	background-color:#fce075;
 }
 .info{

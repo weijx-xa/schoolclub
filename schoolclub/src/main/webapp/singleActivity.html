@@ -5,13 +5,32 @@
 <title>singleActivity</title>
 <link type="text/css" href="style/singleActivity.css" rel="stylesheet" />
 	<link type="text/css" href="style/head1.css" rel="stylesheet" />
+	<link type="text/css" href="style/confirmJoin.css" rel="stylesheet" />
 	<link type="text/css" href="style/lianxiwomen.css" rel="stylesheet" />
 <script src="js/jquery-1.8.3.js" language="javascript" type="text/javascript"></script>
+	<script src="js/reply.js" language="javascript" type="text/javascript"></script>
+	<script src="js/simpleAlert.js" language="javascript" type="text/javascript"></script>
 <script src="js/jQuery-jcLightBox.js" language="javascript" type="text/javascript"></script><!--图片点击放大-->
 <script type="text/javascript">
+	$(function () {
+		//确认弹出框
+		$(".join").click(function () {
+			var onlyChoseAlert = simpleAlert({
+				"content": "确认参加 <i>一起来玩狼人杀</i> 吗？",
+				"buttons": {
+					"确定": function () {
+						onlyChoseAlert.close();
+					}
+				}
+			})
+		})
+	});
 	<!-- 菜单 -->
+
 	$(document).ready(function (){
 		menu();
+		pictureBox();
+		pictureRoll();
 	});
 	function menu(){
 		$('.list >li').hover(function(){
@@ -20,51 +39,26 @@
 		});
 	};
 	<!-- 图片盒子 -->
-$(function(){
-	
-    $("#jingcai1").jcLightBox();
-	
-	$("#jingcai").jcLightBox({
-		speed : 200,
-		listSpeed : 200,
-		setLood : {
-			path : "img/loading.gif",
-			width : 32,
-			height : 32
-		},
-		setModal : {
-			bgColor : "#000",
-			opacity : .6
-		},
-		state : "fade"
-	});
-	
-});
-	<!-- 回复 -->
-$(function(){
-	$("#messageshow .replybutton").click(function(){
-		var focus = $("ul li .reply");
-		if(focus.css("display")=="none")
-		{
-			focus.show();
-			this.innerHTML = "收起";
-		}else
-		{
-			focus.hide();
-			this.innerHTML = "回复";
-		}
-	});
-	$(".reply form").submit(function(){
-		var textarea = $(this).find(".replytextarea");
-		if(textarea.val()==""||textarea.val()=="请输入内容")
-		{
-			textarea.blur();
-			return false;
-		}
-	});
-});
+	function pictureBox(){
+		$("#jingcai1").jcLightBox();
+
+		$("#jingcai").jcLightBox({
+			speed : 200,
+			listSpeed : 200,
+			setLood : {
+				path : "img/loading.gif",
+				width : 32,
+				height : 32
+			},
+			setModal : {
+				bgColor : "#000",
+				opacity : .6
+			},
+			state : "fade"
+		});
+	};
  <!--图片滚动-->
-	$(function(){
+	function pictureRoll(){
 		var flag = "left";
 		function DY_scroll(wraper,prev,next,img,imga,speed,or){
 			var wraper = $(wraper); /*包装*/
@@ -96,18 +90,22 @@ $(function(){
 
 		}
 		DY_scroll('#jingcaishunjian','.leftbtn','.rightbtn','.jingcaishunjian1');
-	});
-	// true为自动播放，不加此参数或false就默认不自动
+		// true为自动播放，不加此参数或false就默认不自动
+	};
+
 </script>
 </head>
 
 <body>
 <div id="wrapper">
 	<div class="header">
-		<a style="color: #eeeeee" href="#">创建社团</a>
-		<a style="color: #eeeeee" href="./login/login.html">登陆</a>
+		<a id="setUpClub"style="color: #eeeeee" href="#">创建社团</a>
+		<a id="login"style="color: #eeeeee" href="#">登陆</a>
 		<span style="color: #eeeeee">/</span>
-		<a style="color: #eeeeee" href="register.html">注册</a>
+		<a id="Register"style="color: #eeeeee" href="#l">注册</a>
+		<div id="unprocessedMessageWrapper">
+			<a id="unprocessedMessage" href="#">您有一条未处理消息</a>
+		</div>
 	</div>
 	<div id="nav" >
 		<div id="logo"><img src="p/source/logo.png" style="width: 180px;height: 80px"> </div>

@@ -8,44 +8,19 @@
     <link type="text/css" href="style/lianxiwomen.css" rel="stylesheet" />
     <link type="text/css" href="style/sideBar.css" rel="stylesheet" />
     <script src="js/jquery-1.8.3.js" language="javascript" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(document).ready(function (){
-            menu();
-        });
-        function menu(){
-            $('.list >li').hover(function(){
-                $(this).children('.hide').toggle();
-                $(this).children('.hengtiao').toggle();
-            });
-        };
-        $(document).ready(function (){
-            t = $('#rightBar').offset().top;
-            $(window).scroll(function(e){
-                s = $(document).scrollTop();
-                if(s > t){
-                    $('#rightBar').css('position','fixed');
-                    $('#rightBar').css('top',100+'px');
-                    $('#leftBar').css('position','fixed');
-                    $('#leftBar').css('top',100+'px');
-
-                }else{
-                    $('#rightBar').css('position','');
-                    $('#rightBar').css('top',600+'px');
-                    $('#leftBar').css('position','');
-                    $('#leftBar').css('top',600+'px');
-                }
-            })
-        });
-    </script>
+    <script src="js/MenuSidebar.js" language="javascript" type="text/javascript"></script>
 </head>
 
 <body>
 <div id="wrapper">
     <div class="header">
-        <a style="color: #eeeeee" href="#">创建社团</a>
-        <a style="color: #eeeeee" href="./login/login.html">登陆</a>
+        <a id="setUpClub"style="color: #eeeeee" href="#">创建社团</a>
+        <a id="login"style="color: #eeeeee" href="#">登陆</a>
         <span style="color: #eeeeee">/</span>
-        <a style="color: #eeeeee" href="register.html">注册</a>
+        <a id="Register"style="color: #eeeeee" href="#l">注册</a>
+        <div id="unprocessedMessageWrapper">
+            <a id="unprocessedMessage" href="#">您有一条未处理消息</a>
+        </div>
     </div>
     <div id="nav" >
         <div id="logo"><img src="p/source/logo.png" style="width: 180px;height: 80px"> </div>

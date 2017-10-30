@@ -6,6 +6,7 @@
     <script src="js/jquery-1.8.3.js"></script>
     <link rel="stylesheet" type="text/css" href="../style/lianxiwomen.css" />
     <link rel="stylesheet" type="text/css" href="../style/personal.css" />
+    <link type="text/css" href="../style/setupclub.css" rel="stylesheet" />
     <script>
         <!--菜单样式-->
         $(document).ready(function(){
@@ -82,10 +83,27 @@
             margin-left: 1250px;
         }
     </style>
-    <link type="text/css" href="style/setupclub.css" rel="stylesheet" />
+
 <body>
-<div id="head1">
-    <iframe height="550px" width="100%" src="smallPage/head1.html" scrolling="no" frameborder="0"></iframe>
+<div id="header1">
+    <div>
+        <a style="color: #eeeeee" href="#">返回首页</a>
+        <a style="color: #eeeeee" href="./login/login.html">登陆</a>
+        <span style="color: #eeeeee">/</span>
+        <a style="color: #eeeeee" href="register.html">注册</a>
+    </div>
+</div>
+<div id="header2">
+    <div id="logo">
+        SchoolClub
+    </div>
+    <div id="navilist">
+        <ul>
+            <li><a href="personal.info.html">个人资料</a> </li>
+            <li>个人中心</li>
+            <li><a href="#">消息通知</a></li>
+        </ul>
+    </div>
 </div>
     <div id="info">
         <h3 class="title">基本资料</h3>
@@ -107,20 +125,27 @@
             <li id="clubtype">
                 <span class="lititle">社团分类</span>
                 <form action="" style="display: inline-block;">
-                    <select name="clubtype"></select>
-                    <select name="specifictype"></select>
+                    <select name="clubtype">
+                        <option value="academic">专业学术</option>
+                        <option value="entertainment">文化娱乐</option>
+                        <option value="sports">体育竞技</option>
+                        <option value="welfare">社会公益</option>
+                        <option value="experience">职业实践</option>
+                        <option value="others">其他</option>
+                    </select>
+
                 </form>
             </li>
             <li id="clubhead">
                 <span class="lititle">社团头像</span>
-                <span><img src="p/source/unloadhead.png"/></span>
+                <span><img src="../p/source/unloadhead.png"/></span>
                 <span><button id="upload">点击上传</button></span>
                 <p>*为了更好的展示效果建议上传120*120比例的jpg或png格式图片</p>
             </li>
         </ul>
     </div>
   <div id="nextstep">
-    <a href="personal.setupclub2.html"><img src="p/source/next-step.png"/></a>
+    <a href="personal.setupclub2.html"><img src="../p/source/next-step.png"/></a>
   </div>
 <div id="lianxiwomen">
     <div id="zhizuoren">
