@@ -1,0 +1,128 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: rgb(238,238,238);
+}
+#header1 {
+    height: 30px;
+    background-color: #4D4D4D;
+    text-align: right;
+    line-height: 30px;
+    font-size: 13px;
+    font-family: "微软雅黑";
+}
+#header1 a:nth-child(1){
+    float: left;
+    margin-left: 30px;
+}
+#header2{
+    height:90px;
+    background-color: #ffffff;
+    font-family: "微软雅黑";
+//    border:1px solid red;
+}
+#logo{
+    float: left;
+    height: 90px;
+    margin-left:30px;
+    line-height: 90px;
+//    border : 1px solid #000000;
+    border-radius: 20px;
+    color: #000000;
+    background-color: yellow;
+    font-family: "微软雅黑";
+}
+#navilist{
+    height:90px;
+    width:700px;
+  //  border:1px solid yellow;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#navilist ul li{
+    list-style: none;
+    float: left;
+    font-size: 20px;
+    width:150px;
+    height:90px;
+    line-height: 90px;
+//    border:1px solid red;
+    margin-left: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+#navilist ul li a{
+    text-decoration: none;
+    color:#000000;
+}
+#navilist ul li:nth-child(2){
+    font-size: 24px;
+    font-weight: bold;
+}
+#navilist ul li a:hover{
+    color:#F39C0C;
+}
+#content{
+    width:1200px;
+    height:900px;
+    margin: 40px auto 0 auto;
+//    border:1px solid red;
+    background-color: #ffffff;
+}
+#sidebar{
+    width:300px;
+    height:900px;
+    margin: 0;
+    border:1px solid rgba(255,255,255,0);
+    background-color: rgb(229,229,229);
+}
+#side{
+    width: 200px;
+    margin-top: 200px;
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+//    border:1px solid #000000;
+}
+#side div{
+    width:inherit;
+    margin-bottom: 20px;
+    border:1px solid #777777;
+    border-radius: 1em;
+}
+#side a{
+    text-decoration: none;
+    color:#000000;
+    font-family: "微软雅黑";
+}
+#side dt{
+    font-size: 18px;
+    margin-bottom: 13px;
+    background-image:url("../p/source/下拉灰.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+#side dd{
+    margin-bottom: 12px;
+}
+#side dt:hover{
+    background-image:url("../p/source/下拉黄.png");
+}
+#side dt a:hover{
+    color:#F39C0C;
+    font-weight: bold;
+}
+#side dd a:hover{
+    color:#F39C0C;
+}
+#side .setupClub{
+    font-size:18px;
+    height:35px;
+    line-height: 35px;
+}
+#side .setupClub a:hover{
+    color:#F39C0C;
+    font-weight: bold;
+}

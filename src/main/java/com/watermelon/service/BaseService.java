@@ -1,7 +1,6 @@
 package com.watermelon.service;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

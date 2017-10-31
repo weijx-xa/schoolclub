@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+        #lianxiwomen {
+            height: 232px;
+            background-color: #252525;
+        / / border : solid 1 px red;
+            color: snow;
+        / / line-height : 232 px;
+
+        }
+
+        #lianxiwomen #zhizuoren {
+            width: 130px;
+            height: 30px;
+            font-size: small;
+        / / border : solid 1 px white;
+            margin-left: 90%;
+            position: relative;
+            font-family: "微软雅黑";
+            background-color:#252525 ;
+            top: 200px;
+
+        }
