@@ -1,7 +1,9 @@
 package com.watermelon.service;
 
-import com.watermelon.pojo.OtherImage;
+import org.springframework.stereotype.Service;
 
+import com.watermelon.pojo.OtherImage;
+@Service
 public class OtherImageService extends BaseService<OtherImage>{
 
 }

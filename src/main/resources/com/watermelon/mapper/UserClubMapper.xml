@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC   
     "-//mybatis.org//DTD Mapper 3.0//EN"  
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper>
+<mapper namespace="com.watermelon.mapper.UserClubMapper">
+
 	<sql id="columns">
 		userId,clubId,createTime,status,isDeleted
 	</sql>
@@ -63,21 +64,29 @@
 	</update>
 
 	<update id="selectFirstListBySecondId">
-		select user.id as id,user.email as email,user.password as password,user.salt as salt,user.headImage as headImage,user.nickName as nickName,user.gender as gender,user.phoneNum as phoneNum,user.createTime as createTime 
+		select user.id as id,user.email as email,user.password as
+		password,user.salt as salt,user.headImage as headImage,user.nickName
+		as nickName,user.gender as gender,user.phoneNum as
+		phoneNum,user.createTime as createTime
 		from UserClub as userclub
-		left join user as user on userclub.userId=user.id
+		left
+		join user as user on userclub.userId=user.id
 		<where>
-		userclub.isDeleted=false and user.isDeleted=false
-            <if test="clubId!=null and clubId!=''">and clubId=#{clubId}</if>
+			userclub.isDeleted=false and user.isDeleted=false
+			<if test="clubId!=null and clubId!=''">and clubId=#{clubId}</if>
 		</where>
 	</update>
 
 	<update id="selectSecondListByFirstId">
-       select club.id as id,club.name as name,club.property as property,club.count as count,club.description as description,club.number as number,club.faceImage as faceImage,club.logoImage as logoImage,club.createTime as createTime
+		select club.id as id,club.name as name,club.property as
+		property,club.count as count,club.description as
+		description,club.number as number,club.faceImage as
+		faceImage,club.logoImage as logoImage,club.createTime as createTime
 		from UserClub as userclub
-		left join club as club on userclub.clubId=club.id
+		left join club as club on
+		userclub.clubId=club.id
 		<where>
-            <if test="userId!=null and userId!=''">and userId=#{userId}</if>
+			<if test="userId!=null and userId!=''">and userId=#{userId}</if>
 		</where>
 	</update>
 </mapper>

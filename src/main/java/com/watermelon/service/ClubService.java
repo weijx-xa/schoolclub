@@ -1,7 +1,9 @@
 package com.watermelon.service;
 
-import com.watermelon.pojo.Club;
+import org.springframework.stereotype.Service;
 
+import com.watermelon.pojo.Club;
+@Service
 public class ClubService extends BaseService<Club>{
 
 }

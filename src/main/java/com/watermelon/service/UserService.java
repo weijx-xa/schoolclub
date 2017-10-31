@@ -1,7 +1,9 @@
 package com.watermelon.service;
 
-import com.watermelon.pojo.User;
+import org.springframework.stereotype.Service;
 
+import com.watermelon.pojo.User;
+@Service
 public class UserService extends BaseService<User>{
 
 }

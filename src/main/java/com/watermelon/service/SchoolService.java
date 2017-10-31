@@ -1,7 +1,9 @@
 package com.watermelon.service;
 
-import com.watermelon.pojo.School;
+import org.springframework.stereotype.Service;
 
+import com.watermelon.pojo.School;
+@Service
 public class SchoolService extends BaseService<School>{
 
 }

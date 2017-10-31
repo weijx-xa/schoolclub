@@ -1,7 +1,9 @@
 package com.watermelon.service;
 
-import com.watermelon.pojo.Activity;
+import org.springframework.stereotype.Service;
 
+import com.watermelon.pojo.Activity;
+@Service
 public class ActivityService extends BaseService<Activity> {
 
 }
