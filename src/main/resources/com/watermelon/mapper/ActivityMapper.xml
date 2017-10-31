@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.watermelon.mapper.ActivityMapper">
+
+	<sql id="columns">
+		name,content,createTime,beginDateTime,endDateTime,image,isDeleted
+	</sql>
+
+	<insert id="insert" parameterType="Activity">
+		insert into Activity(
+		<include refid="columns"></include>
+		)
+		values(#{name},#{content},#{beginDateTime},#{endDateTime},#{image},#{createTime},#{isDeleted});
+	</insert>
+
+
+	<update id="delete" parameterType="Activity">
+		update Activity set isDeleted=true
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="name!=null and name!=''">and name=#{name}</if>
+			<if test="content!=null and content!=''">and content=#{content}</if>
+			<if test="beginDateTime!=null and beginDateTime!=''">and beginDateTime=#{beginDateTime}</if>
+			<if test="endDateTime!=null and endDateTime!=''">and endDateTime=#{endDateTime}</if>
+			<if test="image!=null and image!=''">and image =#{image}</if>
+			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
+		</where>
+	</update>
+
+
+
+	<update id="update" parameterType="Activity">
+		update Activity set
+		name=#{name},content=#{content},beginDateTime=#{beginDateTime},endDateTime=#{endDateTime},image=#{image},createTime=#{createTime}
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+		</where>
+	</update>
+
+	<select id="select" parameterType="Activity" resultType="Activity">
+		select *from
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="name!=null and name!=''">and name=#{name}</if>
+			<if test="content!=null and content!=''">and content=#{content}</if>
+			<if test="beginDateTime!=null and beginDateTime!=''">and beginDateTime=#{beginDateTime}</if>
+			<if test="endDateTime!=null and endDateTime!=''">and endDateTime=#{endDateTime}</if>
+			<if test="image!=null and image!=''">and image =#{image}</if>
+			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
+			<if test="isDeleted!=null and isDeleted!=''">and isDeleted=#{isDeleted}</if>
+		</where>
+	</select>
+</mapper>

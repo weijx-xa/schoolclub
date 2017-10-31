@@ -2,79 +2,77 @@
 <!DOCTYPE mapper PUBLIC   
     "-//mybatis.org//DTD Mapper 3.0//EN"  
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.watermelon.mapper.UserClubMapper">
+<mapper namespace="com.watermelon.mapper.TagClubMapper">
 	<sql id="columns">
-		userId,clubId,createTime,status,isDeleted
+		tagId,clubId,createTime,isDeleted
 	</sql>
 
-	<insert id="insert" parameterType="UserClub">
-		insert into UserClub(
+	<insert id="insert" parameterType="TagClub">
+		insert into TagClub(
 		<include refid="columns"></include>
 		)
-		values(#{userId},#{clubId},#{createTime},#{status},#{isDeleted});
+		values(#{tagId},#{clubId},#{createTime},#{isDeleted});
 	</insert>
 
 
-	<update id="delete" parameterType="UserClub">
-		update UserClub set isDeleted=true
+	<update id="delete" parameterType="TagClub">
+		update TagClub set isDeleted=true
 		<where>
 			<if test="id!=null and id!=''">and id=#{id}</if>
-			<if test="userId!=null and userId!=''">and userId=#{userId}</if>
+			<if test="tagId!=null and tagId!=''">and tagId=#{tagId}</if>
 			<if test="clubId!=null and clubId!=''">and clubId=#{clubId}</if>
 			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
-			<if test="status!=null and status!=''">and status=#{status}</if>
 		</where>
 	</update>
 
 
 
-	<update id="update" parameterType="UserClub">
-		update UserClub set
-		userId=#{userId},clubId=#{clubId},createTime=#{createTime},status=#{status},isDeleted=#{isDeleted}
+	<update id="update" parameterType="TagClub">
+		update TagClub set
+		tagId=#{tagId},clubId=#{clubId},createTime=#{createTime},isDeleted=#{isDeleted}
 		<where>
 			<if test="id!=null and id!=''">and id=#{id}</if>
 		</where>
 	</update>
 
-	<select id="select" parameterType="UserClub" resultType="UserClub">
+	<select id="select" parameterType="TagClub" resultType="TagClub">
 		select *from
 		<where>
 			<if test="id!=null and id!=''">and id=#{id}</if>
-			<if test="userId!=null and userId!=''">and userId=#{userId}</if>
+			<if test="tagId!=null and tagId!=''">and tagId=#{tagId}</if>
 			<if test="clubId!=null and clubId!=''">and clubId=#{clubId}</if>
 			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
-			<if test="status!=null and status!=''">and status=#{status}</if>
 			<if test="isDeleted!=null and isDeleted!=''">and isDeleted=#{isDeleted}</if>
 		</where>
 	</select>
 
 	<update id="deleteByFirstId" parameterType="Long">
-		update UserClub set isDeleted=true
+		update TagClub set isDeleted=true
 		<where>
-			<if test="userId!=null and userId!=''">and userId=#{userId}</if>
+			<if test="tagId!=null and tagId!=''">and tagId=#{tagId}</if>
 		</where>
 	</update>
 
 	<update id="deleteBySecondId" parameterType="Long">
-		update UserClub set isDeleted=true
+		update TagClub set isDeleted=true
 		<where>
 			<if test="clubId!=null and clubId!=''">and clubId=#{clubId}</if>
 		</where>
 	</update>
 
 	<update id="selectFirstListBySecondId">
-		select user.id as id,user.email as email,user.password as password,user.salt as salt,user.headImage as headImage,user.nickName as nickName,user.gender as gender,user.phoneNum as phoneNum,user.createTime as createTime 
-		from UserClub as userclub
-		left join user as user on userclub.userId=user.id
+		select tag.id as id,tag.name as name,user.createTime as createTime 
+		from TagClub as tagclub
+		left join tag as tag on tagclub.tagId=tag.id
 		<where>
-		userclub.isDeleted=false and user.isDeleted=false
+		tagclub.isDeleted=false and tag.isDeleted=false
             <if test="clubId!=null and clubId!=''">and clubId=#{clubId}</if>
 		</where>
 	</update>
 
 	<update id="selectSecondListByFirstId">
        select club.id as id,club.name as name,club.property as property,club.count as count,club.description as description,club.number as number,club.faceImage as faceImage,club.logoImage as logoImage,club.createTime as createTime
-		from UserClub as userclub
+		from TagClub as tagclub
 		left join club as club on userclub.clubId=club.id
 		<where>
             <if test="userId!=null and userId!=''">and userId=#{userId}</if>

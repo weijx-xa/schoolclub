@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.watermelon.mapper.ClubActivityMapper">
+	<sql id="columns">
+		clubId,activityId,createTime,isDeleted
+	</sql>
+
+	<insert id="insert" parameterType="ClubActivity">
+		insert into ClubActivity(
+		<include refid="columns"></include>
+		)
+		values(#{clubId},#{activityId},#{createTime},#{isDeleted});
+	</insert>
+
+
+	<update id="delete" parameterType="ClubActivity">
+		update ClubActivity set isDeleted=true
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="clubId!=null and clubId!=''">and clubId=#{clubId}</if>
+			<if test="activityId!=null and activityId!=''">and activityId=#{activityId}</if>
+			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
+		</where>
+	</update>
+
+
+
+	<update id="update" parameterType="ClubActivity">
+		update ClubActivity set
+		clubId=#{clubId},activityId=#{activityId},createTime=#{createTime},isDeleted=#{isDeleted}
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+		</where>
+	</update>
+
+	<select id="select" parameterType="ClubActivity" resultType="ClubActivity">
+		select *from
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="clubId!=null and clubId!=''">and clubId=#{clubId}</if>
+			<if test="activityId!=null and activityId!=''">and activityId=#{activityId}</if>
+			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
+			<if test="isDeleted!=null and isDeleted!=''">and isDeleted=#{isDeleted}</if>
+		</where>
+	</select>
+
+	<update id="deleteByFirstId" parameterType="Long">
+		update ClubActivity set isDeleted=true
+		<where>
+			<if test="clubId!=null and clubId!=''">and clubId=#{clubId}</if>
+		</where>
+	</update>
+
+	<update id="deleteBySecondId" parameterType="Long">
+		update ClubActivity set isDeleted=true
+		<where>
+			<if test="activityId!=null and activityId!=''">and activityId=#{activityId}</if>
+		</where>
+	</update>
+
+	<update id="selectFirstListBySecondId">
+	   select club.id as id,club.name as name,club.property as property,club.count as count,club.description as description,club.number as number,club.faceImage as faceImage,club.logoImage as logoImage,club.createTime as createTime
+		from ClubActivity as clubactivity
+		left join club as club on clubactivity.clubId=club.id
+		<where>
+		userclub.isDeleted=false and user.isDeleted=false
+            <if test="activityId!=null and activityId!=''">and activityId=#{activityId}</if>
+		</where>
+	</update>
+
+	<update id="selectSecondListByFirstId">
+       select activity.id as id,activity.name as name,activity.content as content,activity.beginDateTime as beginDateTime,activity.endDateTime as endDateTime,activity.image as image,activity.createTime as createTime
+		from ClubActivity as clubactivity
+		left join activity as activity on clubactivity.activityId=activity.id
+		<where>
+            <if test="clubId!=null and clubId!=''">and clubId=#{clubId}</if>
+		</where>
+	</update>
+</mapper>
