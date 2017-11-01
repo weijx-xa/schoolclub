@@ -53,7 +53,7 @@ body{
 	position:absolute;
 	top:-1px;
 	right:-5px;
-	background-image:url(../p/source/corner.png);
+	background-image:url(/schoolclub/images/source/corner.png);
 }
 .info ul{
 	margin-top:45px;
@@ -70,22 +70,22 @@ body{
 	padding-bottom:30px;
 }
 .info .holder:before{
-	content:url(../p/source/holder.png);
+	content:url(/schoolclub/images/source/holder.png);
 	position:absolute;
 	left:45px;
 }
 .info .time:before{
-	content:url(../p/source/time%20.png);
+	content:url(/schoolclub/images/source/time%20.png);
 	position:absolute;
 	left:45px;
 }
 .info .address:before{
-	content:url(../p/source/addresss.png);
+	content:url(/schoolclub/images/source/addresss.png);
 	position:absolute;
 	left:45px;
 }
 .info .joinumber:before{
-	content:url(../p/source/joinumber.png);
+	content:url(/schoolclub/images/source/joinumber.png);
 	position:absolute;
 	left:45px;
 }
@@ -107,19 +107,19 @@ body{
 	color:#000;
 }
 .click .join:before{
-	content:url(../p/source/join.png);
+	content:url(/schoolclub/images/source/join.png);
 	position:absolute;
 	left:45px;
 	top:290px;
 }
 .click .follow:before{
-	content:url(../p/source/follow.png);
+	content:url(/schoolclub/images/source/follow.png);
 	position:absolute;
 	left:275px;
 	top:293px;
 }
 .click .share:before{
-	content:url(../p/source/share.png);
+	content:url(/schoolclub/images/source/share.png);
 	position:absolute;
 	left:500px;
 	top:290px;
@@ -134,7 +134,7 @@ body{
 	color:#FF9801;
 }
 .welcome p:before{
-	content:url(../p/source/voice.gif);
+	content:url(/schoolclub/images/source/voice.gif);
 	position:absolute;
 	left:460px;
 	top:350px;
@@ -184,11 +184,11 @@ body{
 }
 .club .follow:before{
 	position:absolute;
-	content:url(../p/source/followbefore.png);
+	content:url(/schoolclub/images/source/followbefore.png);
 	left:-30px;
 }
 .club .follow:hover::before{
-	content:url(../p/source/followafter.png);
+	content:url(/schoolclub/images/source/followafter.png);
 }
 .club .join{
     position:absolute;
@@ -245,7 +245,7 @@ body{
 .leftbtn{
 	width:50px; 
 	height:50px;
-	background:url(../p/source/left.png) no-repeat;
+	background:url(/schoolclub/images/source/left.png) no-repeat;
 	position:absolute;
 	margin-left:-55px;
 	margin-top: 60px;
@@ -254,7 +254,7 @@ body{
 .rightbtn{
 	width:50px; 
 	height:50px; 
-	background:url(../p/source/right.png) no-repeat;
+	background:url(/schoolclub/images/source/right.png) no-repeat;
 	position:absolute;
 	margin-left:1100px;
 	margin-top: 60px;
@@ -325,11 +325,11 @@ body{
 #box-top { 
     height:24px; 
 	position:relative; 
-	background:url(../p/source/box-top.png) 
+	background:url(/schoolclub/images/source/box-top.png) 
 	repeat-x 0 0; 
 }
 #box-top-left { 
-    background:url(../p/source/box-ra.png) no-repeat 0 0; 
+    background:url(/schoolclub/images/source/box-ra.png) no-repeat 0 0; 
 	height:24px; 
 	width:24px; 
 	position:absolute; 
@@ -337,7 +337,7 @@ body{
 	top:0;
 }
 #box-top-right { 
-    background:url(../p/source/box-ra.png) no-repeat -25px 0;    height:24px; 
+    background:url(/schoolclub/images/source/box-ra.png) no-repeat -25px 0;    height:24px; 
 	width:24px; 
 	position:absolute; 
 	right:-24px; 
@@ -346,10 +346,10 @@ body{
 #box-btm { 
     height:24px; 
 	position:relative;  
-	background:url(../p/source/box-bottom.png) repeat-x 0 0;
+	background:url(/schoolclub/images/source/box-bottom.png) repeat-x 0 0;
  }
 #box-btm-left { 
-    background:url(../p/source/box-ra.png) no-repeat 0 -25px; 
+    background:url(/schoolclub/images/source/box-ra.png) no-repeat 0 -25px; 
 	height:22px; 
 	width:24px; 
 	position:absolute; 
@@ -357,19 +357,19 @@ body{
 	top:0; 
 }
 #box-btm-right { 
-    background:url(../p/source/box-ra.png) no-repeat -25px -25px;     height:22px; 
+    background:url(/schoolclub/images/source/box-ra.png) no-repeat -25px -25px;     height:22px; 
 	width:24px; 
 	position:absolute; 
 	right:-24px; 
 	top:0; 
 }
 #box-cen { 
-    background:url(../p/source/box-left.png) repeat-y 0 0; 
+    background:url(/schoolclub/images/source/box-left.png) repeat-y 0 0; 
 	position:relative; 
 	left:-24px;
 }
 #box-cen-right { 
-    background:url(../p/source/box-right.png) repeat-y right 0;     position:relative; 
+    background:url(/schoolclub/images/source/box-right.png) repeat-y right 0;     position:relative; 
 	right:-48px;
 }
 #box-cen-img { 
@@ -405,7 +405,7 @@ body{
    position:relative; 
    top:5px; 
    left:5px; 
-   background:url(../p/source/sprite.png) no-repeat;
+   background:url(/schoolclub/images/source/sprite.png) no-repeat;
 }
 #box-next a { 
    background-position:0 -20px; 
@@ -414,7 +414,7 @@ body{
    background-position:0 -40px; 
 }
 #box-close { 
-   background:url(../p/source/box-close.png) no-repeat; 
+   background:url(/schoolclub/images/source/box-close.png) no-repeat; 
    height:60px; 
    width:42px; 
    position:absolute; 
@@ -429,7 +429,7 @@ body{
    position:relative; 
    top:20px; 
    left:8px; 
-   background:url(../p/source/sprite.png) no-repeat 0 0;
+   background:url(/schoolclub/images/source/sprite.png) no-repeat 0 0;
 }
 #box-text { 
    height:50px; 
@@ -439,7 +439,7 @@ body{
 #box-text samp { 
    display:block; 
    position:absolute; 
-   background:url(../p/source/arrow.png) no-repeat; 
+   background:url(/schoolclub/images/source/arrow.png) no-repeat; 
    height:12px; 
    width:12px; 
    left:48%; 
@@ -447,7 +447,7 @@ body{
    z-index:1;
  }
 #box-text-left { 
-   background:url(../p/source/box-text.png) no-repeat; 
+   background:url(/schoolclub/images/source/box-text.png) no-repeat; 
    height:50px; 
    width:10px; 
    position:absolute; 
@@ -458,7 +458,7 @@ body{
    color:#fff; 
    text-shadow:1px 1px 0 #000; 
    text-align:center; 
-   background:url(../p/source/box-text-cen.png) repeat-x; 
+   background:url(/schoolclub/images/source/box-text-cen.png) repeat-x; 
    height:50px; 
    line-height:50px; 
    margin:0 10px; 
@@ -467,7 +467,7 @@ body{
    overflow:hidden;
 }
 #box-text-right { 
-   background:url(../p/source/box-text.png) no-repeat right 0;   height:50px; 
+   background:url(/schoolclub/images/source/box-text.png) no-repeat right 0;   height:50px; 
    width:10px; 
    position:absolute; 
    right:0; 

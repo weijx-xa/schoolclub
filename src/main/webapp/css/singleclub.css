@@ -28,7 +28,7 @@ body{
 .pic .picinfo{
 	width:312px;
 	height:342px;
-	background-image:url(../p/source/clubbg.jpg) ;
+	background-image:url(/schoolclub/images/source/clubbg.jpg) ;
 	background-repeat: no-repeat;
 }
 .pic .picinfo img{
@@ -105,7 +105,7 @@ body{
 	position: absolute;
 	top:5px;
 	left:25px;
-	background: url("../p/source/followbefore.png") no-repeat;
+	background: url("/schoolclub/images/source/followbefore.png") no-repeat;
 }
 .text .join{
 	width:100px;
@@ -131,7 +131,7 @@ body{
 	position:absolute;
 	top:210px;
 	right:-25px;
-	background-image:url(../p/source/border.png);
+	background-image:url(/schoolclub/images/source/border.png);
 }
 .info ul{
 	margin-left: 60px;
@@ -149,18 +149,18 @@ body{
 }
 .info ul .address:before{
 	position:absolute;
-	content:url(../p/source/address.png);
+	content:url(/schoolclub/images/source/address.png);
 	left:8px;
 	top:90px;
 }
 .info ul .property:before{
-	content:url(../p/source/property.png);
+	content:url(/schoolclub/images/source/property.png);
 	position:absolute;
 	left:8px;
 }
 .info ul .size:before{
 	position:absolute;
-	content:url(../p/source/number.png);
+	content:url(/schoolclub/images/source/number.png);
 	left:8px;
 }
 .info ul .introduction{
@@ -171,7 +171,7 @@ body{
 }
 .info ul .introduction:before{
 	position:absolute;
-	content:url(../p/source/introduction.png);
+	content:url(/schoolclub/images/source/introduction.png);
 	left:8px;
 }
 #framework{
@@ -260,7 +260,7 @@ body{
 .leftbtn{
 	width:50px; 
 	height:50px;
-	background:url(../p/source/left.png) no-repeat;
+	background:url(/schoolclub/images/source/left.png) no-repeat;
 	position:absolute;
 	top:1060px;
 	left:200px;
@@ -269,7 +269,7 @@ body{
 .rightbtn{
 	width:50px; 
 	height:50px; 
-	background:url(../p/source/right.png) no-repeat;
+	background:url(/schoolclub/images/source/right.png) no-repeat;
 	position:absolute;
 	top:1060px;  
 	right:180px;

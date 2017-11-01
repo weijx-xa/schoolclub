@@ -5,7 +5,7 @@
     top:600px;
     left: 15px;
 //    border: 1px solid #000000;
-    background: url("../images/source/leftBar.png") no-repeat;
+    background: url("/schoolclub/images/source/leftBar.png") no-repeat;
 }
 #rightBar{
     width: 52px;

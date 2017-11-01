@@ -26,7 +26,7 @@ public class UserController {
 
 	@RequestMapping("/login")
 	public ModelAndView Login() {
-		ModelAndView modelAndView = new ModelAndView("index");
+		ModelAndView modelAndView = new ModelAndView("login");
 		return modelAndView;
 	}
 
@@ -61,17 +61,62 @@ public class UserController {
 			return modelAndView;
 		}
 	}
-	@RequestMapping("register")
-	public ModelAndView register()
+	
+	@RequestMapping(value="/register",method=RequestMethod.POST)
+	public ModelAndView register(User user)
 	{
-		ModelAndView modelAndView = new ModelAndView("register");
+		ModelAndView modelAndView = new ModelAndView("personInfo");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="register",method=RequestMethod.POST)
-	public ModelAndView register(User user)
+	/**
+	 * 报名活动
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value="/joinClub",method=RequestMethod.GET)
+	public ModelAndView joinClub(User user)
 	{
-		ModelAndView modelAndView = new ModelAndView("registerSuccess");
+		ModelAndView modelAndView = new ModelAndView("joinClub");
 		return modelAndView;
 	}
+	
+	
+	@RequestMapping(value="/followClub",method=RequestMethod.GET)
+	public ModelAndView followClub(User user)
+	{
+		ModelAndView modelAndView = new ModelAndView("followClub");
+		return modelAndView;
+	}
+	
+	
+	/**
+	 * 报名活动
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value="/joinAc",method=RequestMethod.GET)
+	public ModelAndView joinAc(User user)
+	{
+		ModelAndView modelAndView = new ModelAndView("joinAc");
+		return modelAndView;
+	}
+	
+	
+	@RequestMapping(value="/followAc",method=RequestMethod.GET)
+	public ModelAndView followAc(User user)
+	{
+		ModelAndView modelAndView = new ModelAndView("followAc");
+		return modelAndView;
+	}
+	
+	
+	@RequestMapping(value="/message",method=RequestMethod.GET)
+	public ModelAndView message(User user)
+	{
+		ModelAndView modelAndView = new ModelAndView("message");
+		return modelAndView;
+	}
+	
+
 }

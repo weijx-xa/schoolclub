@@ -50,10 +50,10 @@
 	margin-bottom:10px;
 }
 #news .address:before{
-	content:url(../p/source/addresss.png);
+	content:url(/schoolclub/images/source/addresss.png);
 }
 #news .time:before{
-	content:url(../p/source/time2.png);
+	content:url(/schoolclub/images/source/time2.png);
 }
 .countdownWrapper{
 	width:600px;

@@ -100,7 +100,7 @@ body{
 #side dt{
     font-size: 18px;
     margin-bottom: 13px;
-    background-image:url("../p/source/下拉灰.png");
+    background-image:url("/schoolclub/images/source/下拉灰.png");
     background-repeat: no-repeat;
     background-position: right;
 }
@@ -108,7 +108,7 @@ body{
     margin-bottom: 12px;
 }
 #side dt:hover{
-    background-image:url("../p/source/下拉黄.png");
+    background-image:url("/schoolclub/images/source/下拉黄.png");
 }
 #side dt a:hover{
     color:#F39C0C;

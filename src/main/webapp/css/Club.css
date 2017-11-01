@@ -52,16 +52,16 @@ body {
 	-moz-transition:  all 0.4s ease-in 0.3s;
 }
 .club-show li a.club.pic1{
-	background-image: url("../p/club/club3.png");
+	background-image: url("/schoolclub/images/club/club3.png");
 }
 .club-show li a.club.pic2{
-	background-image: url("../p/club/club3.png");
+	background-image: url("/schoolclub/images/club/club3.png");
 }
 .club-show li a.club.pic3{
-	background-image: url("../p/club/club3.png");
+	background-image: url("/schoolclub/images/club/club3.png");
 }
 .club-show li a.club.pic4{
-	background-image: url("../p/club/club3.png");
+	background-image: url("/schoolclub/images/club/club3.png");
 }
 .club-show li .text {
 	width: 152px;
@@ -132,7 +132,7 @@ a.club:hover .text{
 //  border:1px solid #000000;
 	background-color: #ffffff;
 	margin-top: 5px;
-	background: url("../p/source/followbefore.png") no-repeat;
+	background: url("/schoolclub/images/source/followbefore.png") no-repeat;
 	background-position: 55px 0px;
 }
 .club  li:hover .follow{

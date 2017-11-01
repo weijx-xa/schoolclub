@@ -1,3 +1,4 @@
+<%@page import="com.fasterxml.jackson.annotation.JsonInclude.Include"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,12 +6,12 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>shouye</title>
-    <link rel="stylesheet" type="text/css" href="css/shouye.css" />
-    <link rel="stylesheet" type="text/css" href="css/head2.css" />
-    <link rel="stylesheet" type="text/css" href="css/sideBar.css" />
-    <link rel="stylesheet" type="text/css" href="css/lianxiwomen.css" />
-    <script src="js/jquery-1.8.3.js" language="javascript" type="text/javascript"></script>
-    <script src="js/MenuSidebar.js" language="javascript" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/shouye.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/head2.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sideBar.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/lianxiwomen.css" />
+    <script src="${pageContext.request.contextPath}/js/jquery-1.8.3.js" language="javascript" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/MenuSidebar.js" language="javascript" type="text/javascript"></script>
     <script type="text/javascript">
         $(function(){
             var curr = 0;
@@ -38,43 +39,7 @@
     </script>
 </head>
 <body>
-<div id="wrapper">
-    <div class="header">
-            <a id="setUpClub"style="color: #eeeeee" href="#">创建社团</a>
-            <a id="login"style="color: #eeeeee" href="#">登陆</a>
-            <span style="color: #eeeeee">/</span>
-            <a id="Register"style="color: #eeeeee" href="#l">注册</a>
-        <div id="unprocessedMessageWrapper">
-            <a id="unprocessedMessage" href="#">您有一条未处理消息</a>
-        </div>
-    </div>
-    <div id="nav" >
-        <div id="logo"><img src="images/source/logo.png" style="width: 180px;height: 80px"> </div>
-        <div id="gif"></div>
-        <div id="guide">
-            <ul class="list">
-                <li><a id="nav-homepage" href="#">首页</a><div class="hengtiao"></div></li>
-                <li><a id="nav-club" href="#">社团</a><div class="hengtiao"></div></li>
-                <li>
-                    <a id="nav-activity" href="#">活动</a>
-                    <div class="hide">
-                        <a href="#">社团活动</a>
-                        <a href="#">校园资讯</a>
-                    </div>
-                </li>
-            </ul>
-            <div id="search">
-                    <input type="text" id="input1" >
-                    <button type="submit" id="button">搜索</button>
-            </div>
-        </div>
-    </div>
-    <div class="background">
-        <div id="div02">
-        </div>
-    </div>
-    <div id="a-wire"></div>
-</div>
+<%@include file="smallpage/head.jsp"%>
 <div class="content">
     <div id="headline">
         <div class="title"><img src="images/source/headlines.jpg"/> </div>
@@ -82,11 +47,11 @@
           <div class="lunbo">
                   <div id="po" class="po">
                       <div id="pol">
-                          <img src="images/lunboimages/lunbo1.jpg" />
-                          <img src="images/lunboimages/lunbo2.jpg" />
-                          <img src="images/lunboimages/lunbo3.jpg" />
-                          <img src="images/lunboimages/lunbo4.jpg" />
-                          <img src="images/lunboimages/lunbo5.jpg" />
+                          <img src="${pageContext.request.contextPath}/images/lunboimages/lunbo1.jpg" />
+                          <img src="${pageContext.request.contextPath}/images/lunboimages/lunbo2.jpg" />
+                          <img src="${pageContext.request.contextPath}/images/lunboimages/lunbo3.jpg" />
+                          <img src="${pageContext.request.contextPath}/images/lunboimages/lunbo4.jpg" />
+                          <img src="${pageContext.request.contextPath}/images/lunboimages/lunbo5.jpg" />
                       </div>
                       <div id="lunbobg"></div>
                       <div id="num" class="num">
@@ -110,7 +75,7 @@
         </div>
     </div>
     <div id="club">
-        <div class="title"><img src="images/source/club.jpg"/> </div>
+        <div class="title"><img src="${pageContext.request.contextPath}/images/source/club.jpg"/> </div>
         <ul class="club-show">
             <li>
                 <a class="club pic1">
@@ -166,21 +131,21 @@
         </div>
     </div>
     <div id="activity">
-        <div class="title"><img src="images/source/Activity.jpg"/> </div>
+        <div class="title"><img src="${pageContext.request.contextPath}/images/source/Activity.jpg"/> </div>
         <div class="activity1">
             <ul>
                 <li class="activity">
-                    <a href="#"><img src="images/activity/activity.jpg"/></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/images/activity/activity.jpg"/></a>
                     <h3>大家一起来打羽毛球</h3>
                     <p>社团：羽毛协会</p>
                     <p>活动时间：2016年6月12日下午14:00</p></li>
                 <li class="activity">
-                    <a href="#"><img src="images/activity/activity2.jpg" /></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/images/activity/activity2.jpg" /></a>
                     <h3>大家一起来打羽毛球</h3>
                     <p>社团：羽毛协会</p>
                     <p>活动时间：2016年6月12日下午14:00</p></li>
                 <li class="activity">
-                    <a href="#"><img src="images/activity/activity3.jpg" /></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/images/activity/activity3.jpg" /></a>
                     <h3>大家一起来打羽毛球</h3>
                     <p>社团：羽毛协会</p>
                     <p>活动时间：2016年6月12日下午14:00</p></li>

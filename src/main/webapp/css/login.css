@@ -85,7 +85,7 @@ body {
 	position: absolute;
 	top: 21px;
 	left: -7px;
-	background: url(../p/source/loginRegister-title.png) no-repeat;
+	background: url(/schoolclub/images/source/loginRegister-title.png) no-repeat;
 }
 #loginRegister-title p{
 	width: 50%;
@@ -165,11 +165,11 @@ form input[type="password"] {
 	width: 80%;
 }
 form input[type="text"]{
-	background:#eae7e7 url(../p/loginpic/user.png) no-repeat;
+	background:#eae7e7 url(/schoolclub/images/loginpic/user.png) no-repeat;
 	margin-top:10px;
 }
 form input[type="password"] {
-	background:#eae7e7 url(../p/loginpic/pw.png) no-repeat;
+	background:#eae7e7 url(/schoolclub/images/loginpic/pw.png) no-repeat;
 	background-position:left;
 	margin-top:10px;
 }

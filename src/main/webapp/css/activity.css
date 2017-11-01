@@ -58,7 +58,7 @@ body{
 }
 #activity .title:before{
 	position:absolute;
-	content:url(../p/source/%E6%8A%95%E7%A8%BF%E5%89%8D.png);
+	content:url(/schoolclub/images/source/%E6%8A%95%E7%A8%BF%E5%89%8D.png);
 	left:650px;
 }
 #activity ul{
