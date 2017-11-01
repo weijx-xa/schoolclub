@@ -42,7 +42,7 @@
 	</update>
 
 	<select id="select" parameterType="Club" resultType="Club">
-		select *from
+		select *from Club
 		<where>
 			<if test="id!=null and id!=''">and id=#{id}</if>
 			<if test="name!=null and name!=''">and name=#{name}</if>

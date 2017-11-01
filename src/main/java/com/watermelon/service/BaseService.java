@@ -1,13 +1,16 @@
 package com.watermelon.service;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-import org.springframework.stereotype.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.watermelon.mapper.IMapper;
-@Service
-public class BaseService<T> {
+import com.watermelon.imapper.IMapper;
 
+public class BaseService<T> {
+	
+	@Autowired
 	private IMapper<T> mapper;
 
 	/**

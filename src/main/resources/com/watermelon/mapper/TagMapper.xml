@@ -36,7 +36,7 @@
 	</update>
 
 	<select id="select" parameterType="Tag" resultType="Tag">
-		select *from
+		select *from Tag
 		<where>
 			<if test="id!=null and id!=''">and id=#{id}</if>
 			<if test="name!=null and name!=''">and name=#{name}</if>

@@ -37,7 +37,7 @@
 	</update>
 
 	<select id="select" parameterType="Head" resultType="Head">
-		select *from
+		select *from Head
 		<where>
 			<if test="id!=null and id!=''">and id=#{id}</if>
 			<if test="title!=null and title!=''">and title=#{title}</if>

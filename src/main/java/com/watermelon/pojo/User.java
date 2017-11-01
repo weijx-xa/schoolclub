@@ -1,12 +1,14 @@
 package com.watermelon.pojo;
+
 /**
  * 用户
+ * 
  * @author watermelon
  *
  */
 public class User extends BaseEntity {
 	private static final long serialVersionUID = 1L;
-	private String eamil;
+	private String email;
 	private String password;
 	private String salt;
 	private String headImage;
@@ -14,12 +16,12 @@ public class User extends BaseEntity {
 	private Boolean gender;
 	private String phoneNum;
 
-	public String getEamil() {
-		return eamil;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEamil(String eamil) {
-		this.eamil = eamil;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {

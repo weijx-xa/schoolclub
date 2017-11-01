@@ -39,7 +39,7 @@
 	</update>
 
 	<select id="select" parameterType="Answer" resultType="Answer">
-		select *from
+		select *from Answer
 		<where>
 			<if test="id!=null and id!=''">and id=#{id}</if>
 			<if test="questionId!=null and questionId!=''">and questionId=#{questionId}</if>

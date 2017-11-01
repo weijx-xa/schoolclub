@@ -36,7 +36,7 @@
 	</update>
 
 	<select id="select" parameterType="TagClub" resultType="TagClub">
-		select *from
+		select *from TagClub
 		<where>
 			<if test="id!=null and id!=''">and id=#{id}</if>
 			<if test="tagId!=null and tagId!=''">and tagId=#{tagId}</if>

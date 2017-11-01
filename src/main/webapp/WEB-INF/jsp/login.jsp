@@ -28,6 +28,33 @@
 			$(this).children('.hengtiao').toggle();
 		});
 	};
+	function settime(data)
+	{
+		var to=$("#registerEmail").val();
+		$.ajax({
+			type:"post",
+			url:'<%=path%>/sendEmail',
+			data:{
+				to:to
+			},
+			dataType:"json",
+			success:function(data){
+				if(data.status=="true")
+					{
+					    //调用倒计时方法，下面的alert可以注释
+					    alert("验证码发送成功");
+					}
+				else{
+					alert("邮件验证码发送失败");
+				}
+			},
+			error:function(){
+				alert("服务器出错了，请稍后尝试");
+			}
+			
+		});
+	}
+	
 	$(document).ready(function() {
 		$("#loginRegister").slideDown(500);
 		$("#login-title").addClass("titleBg");
@@ -89,6 +116,9 @@
 				<p id="register-title">注册</p>
 			</div>
 			<div id="loginForm">
+			<span id="message" style="color:red">
+			   ${message }
+			</span>
 				<form action="">
 					<!--   <h1>账户登录</h1>-->
 					<div class="Login-tel">
@@ -122,18 +152,21 @@
 				</div>
 			</div>
 			<div id="registerForm">
+			<span id="message"  style="color:red">
+			   ${message }
+			</span>
 				<form action="${pageContext.request.contextPath}/user/register" method="post">
 					<!--  <h1>个人注册</h1>-->
 					<div class="Register-tel">
-						<input type="text" placeholder="telephone"
-							name="register-telephone" />
+						<input type="text" placeholder="email" id="registerEmail"
+							name="email" value="844704781@qq.com"/>
 					</div>
 					<div class="Register-password">
-						<input type="password" placeholder="Password"
-							name="register-password" />
+						<input type="password" placeholder="password"
+							name="password" value="123123"/>
 					</div>
 					<div class="Register-code">
-						<input type="text" placeholder="请输入验证码" name="register-code" /> <input
+						<input type="text" placeholder="请输入验证码" name="code" /> <input
 							type="button" id="code-btn" value="获取验证码" onclick="settime(this)" />
 					</div>
 					<div class="register-submit">

@@ -1,4 +1,4 @@
-package com.watermelon.mapper;
+package com.watermelon.imapper;
 
 import java.util.List;
 

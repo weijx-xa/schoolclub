@@ -2,14 +2,14 @@ package com.watermelon.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.github.pagehelper.PageHelper;
-import com.watermelon.mapper.IManyToManyMapper;
-@Service
+import com.watermelon.imapper.IManyToManyMapper;
 public class ManyToManyBaseService<T,F,S> extends BaseService<T>{
-  
-
+   
+	
+    @Autowired
 	private IManyToManyMapper<T, F, S>mapper;
 	/**
 	 * 根据第一张表的Id，删除与之相关的第二张表的数据

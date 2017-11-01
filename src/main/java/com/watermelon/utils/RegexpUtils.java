@@ -41,7 +41,7 @@ public final class RegexpUtils {
      * 不匹配: foo@bar 或 $$$@bar.com 
      *  
      */  
-    public static final String EMAIL_REGEXP = "(?://w[-._//w]*//w@//w[-._//w]*//w//.//w{2,3}$)";  
+    public static final String EMAIL_REGEXP = "\\w+(\\.\\w)*@\\w+(\\.\\w{2,3}){1,3}";  
   
     /** 
      * 匹配并提取url 

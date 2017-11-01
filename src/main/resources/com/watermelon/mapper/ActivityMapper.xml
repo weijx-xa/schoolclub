@@ -40,7 +40,7 @@
 	</update>
 
 	<select id="select" parameterType="Activity" resultType="Activity">
-		select *from
+		select *from  Activity
 		<where>
 			<if test="id!=null and id!=''">and id=#{id}</if>
 			<if test="name!=null and name!=''">and name=#{name}</if>

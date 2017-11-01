@@ -1,5 +1,6 @@
 package com.watermelon.mapper;
 
+import com.watermelon.imapper.IManyToManyMapper;
 import com.watermelon.pojo.Activity;
 import com.watermelon.pojo.User;
 import com.watermelon.pojo.UserActivity;

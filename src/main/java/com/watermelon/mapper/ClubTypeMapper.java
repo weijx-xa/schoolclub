@@ -1,5 +1,6 @@
 package com.watermelon.mapper;
 
+import com.watermelon.imapper.IManyToManyMapper;
 import com.watermelon.pojo.Club;
 import com.watermelon.pojo.ClubType;
 

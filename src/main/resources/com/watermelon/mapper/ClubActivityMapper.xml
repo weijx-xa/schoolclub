@@ -36,7 +36,7 @@
 	</update>
 
 	<select id="select" parameterType="ClubActivity" resultType="ClubActivity">
-		select *from
+		select *from ClubActivity
 		<where>
 			<if test="id!=null and id!=''">and id=#{id}</if>
 			<if test="clubId!=null and clubId!=''">and clubId=#{clubId}</if>
