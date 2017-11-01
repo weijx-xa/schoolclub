@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.watermelon.mapper.QuestionMapper">
+
+	<sql id="columns">
+		userId,content,createTime,isDeleted
+	</sql>
+
+	<insert id="insert" parameterType="Question">
+		insert into Question(
+		<include refid="columns"></include>
+		)
+		values(#{userId},#{content},#{createTime},#{isDeleted});
+	</insert>
+
+
+	<update id="delete" parameterType="Question">
+		update Question set isDeleted=true
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="userId!=null and userId!=''">and userId=#{userId}</if>
+			<if test="content!=null and content!=''">and content=#{content}</if>
+			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
+		</where>
+	</update>
+
+
+
+	<update id="update" parameterType="Question">
+		update Question set
+		userId=#{userId},content=#{content},createTime=#{createTime}
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+		</where>
+	</update>
+
+	<select id="select" parameterType="Question" resultType="Question">
+		select *from
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="userId!=null and userId!=''">and userId=#{userId}</if>
+			<if test="content!=null and content!=''">and content=#{content}</if>
+			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
+			<if test="isDeleted!=null and isDeleted!=''">and isDeleted=#{isDeleted}</if>
+		</where>
+	</select>
+</mapper>

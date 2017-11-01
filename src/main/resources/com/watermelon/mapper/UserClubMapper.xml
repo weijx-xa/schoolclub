@@ -3,7 +3,6 @@
     "-//mybatis.org//DTD Mapper 3.0//EN"  
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.watermelon.mapper.UserClubMapper">
-
 	<sql id="columns">
 		userId,clubId,createTime,status,isDeleted
 	</sql>
@@ -20,10 +19,10 @@
 		update UserClub set isDeleted=true
 		<where>
 			<if test="id!=null and id!=''">and id=#{id}</if>
-			<if test="userId!=null and userId!=''">and =#{userId}</if>
-			<if test="clubId!=null and clubId!=''">and =#{clubId}</if>
-			<if test="createTime!=null and createTime!=''">and =#{createTime}</if>
-			<if test="status!=null and status!=''">and =#{status}</if>
+			<if test="userId!=null and userId!=''">and userId=#{userId}</if>
+			<if test="clubId!=null and clubId!=''">and clubId=#{clubId}</if>
+			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
+			<if test="status!=null and status!=''">and status=#{status}</if>
 		</where>
 	</update>
 
@@ -41,11 +40,11 @@
 		select *from
 		<where>
 			<if test="id!=null and id!=''">and id=#{id}</if>
-			<if test="userId!=null and userId!=''">and =#{userId}</if>
-			<if test="clubId!=null and clubId!=''">and =#{clubId}</if>
-			<if test="createTime!=null and createTime!=''">and =#{createTime}</if>
-			<if test="status!=null and status!=''">and =#{status}</if>
-			<if test="isDeleted!=null and isDeleted!=''">and =#{isDeleted}</if>
+			<if test="userId!=null and userId!=''">and userId=#{userId}</if>
+			<if test="clubId!=null and clubId!=''">and clubId=#{clubId}</if>
+			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
+			<if test="status!=null and status!=''">and status=#{status}</if>
+			<if test="isDeleted!=null and isDeleted!=''">and isDeleted=#{isDeleted}</if>
 		</where>
 	</select>
 

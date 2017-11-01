@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.watermelon.mapper.UserActivityMapper">
+	<sql id="columns">
+		userId,activityId,createTime,status,isDeleted
+	</sql>
+
+	<insert id="insert" parameterType="UserActivity">
+		insert into UserActivity(
+		<include refid="columns"></include>
+		)
+		values(#{userId},#{activityId},#{createTime},#{status},#{isDeleted});
+	</insert>
+
+
+	<update id="delete" parameterType="UserActivity">
+		update UserActivity set isDeleted=true
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="userId!=null and userId!=''">and userId=#{userId}</if>
+			<if test="activityId!=null and activityId!=''">and activityId=#{activityId}</if>
+			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
+			<if test="status!=null and status!=''">and status=#{status}</if>
+		</where>
+	</update>
+
+
+
+	<update id="update" parameterType="UserActivity">
+		update UserActivity set
+		userId=#{userId},activityId=#{activityId},createTime=#{createTime},status=#{status},isDeleted=#{isDeleted}
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+		</where>
+	</update>
+
+	<select id="select" parameterType="UserActivity" resultType="UserActivity">
+		select *from
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="userId!=null and userId!=''">and userId=#{userId}</if>
+			<if test="activityId!=null and activityId!=''">and activityId=#{activityId}</if>
+			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
+			<if test="status!=null and status!=''">and status=#{status}</if>
+			<if test="isDeleted!=null and isDeleted!=''">and isDeleted=#{isDeleted}</if>
+		</where>
+	</select>
+
+	<update id="deleteByFirstId" parameterType="Long">
+		update UserActivity set isDeleted=true
+		<where>
+			<if test="userId!=null and userId!=''">and userId=#{userId}</if>
+		</where>
+	</update>
+
+	<update id="deleteBySecondId" parameterType="Long">
+		update UserActivity set isDeleted=true
+		<where>
+			<if test="activityId!=null and activityId!=''">and activityId=#{activityId}</if>
+		</where>
+	</update>
+
+	<update id="selectFirstListBySecondId">
+		select user.id as id,user.email as email,user.password as password,user.salt as salt,user.headImage as headImage,user.nickName as nickName,user.gender as gender,user.phoneNum as phoneNum,user.createTime as createTime 
+		from UserActivity as useractivity
+		left join user as user on useractivity.userId=user.id
+		<where>
+		userclub.isDeleted=false and user.isDeleted=false
+            <if test="activityId!=null and activityId!=''">and activityId=#{activityId}</if>
+		</where>
+	</update>
+
+	<update id="selectSecondListByFirstId">
+        select activity.id as id,activity.name as name,activity.content as content,activity.beginDateTime as beginDateTime,activity.endDateTime as endDateTime,activity.image as image,activity.createTime as createTime
+		from UserActivity as useractivity
+		left join activity as activity on useractivity.activityId=activity.id
+		<where>
+            <if test="userId!=null and userId!=''">and userId=#{userId}</if>
+		</where>
+	</update>
+</mapper>

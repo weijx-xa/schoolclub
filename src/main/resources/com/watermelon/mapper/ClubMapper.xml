@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.watermelon.mapper.ClubMapper">
+
+	<sql id="columns">
+		name,property,count,description,number,faceImage,logoImage,createTime,isDeleted
+	</sql>
+
+	<insert id="insert" parameterType="Club">
+		insert into club(
+		<include refid="columns"></include>
+		)
+		values(#{name},#{property},#{count},#{description},#{number},#{faceImage},#{logoImage},#{createTime},#{isDeleted});
+	</insert>
+
+
+	<update id="delete" parameterType="Club">
+		update club set isDeleted=true
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="name!=null and name!=''">and name=#{name}</if>
+			<if test="property!=null and property!=''">and property=#{property}</if>
+			<if test="count!=null and count!=''">and count=#{count}</if>
+			<if test="description!=null and description!=''">and description=#{description}</if>
+			<if test="number!=null and number!=''">and number =#{number}</if>
+			<if test="faceImage!=null and faceImage!=''">and faceImage=#{faceImage}</if>
+			<if test="logoImage!=null and logoImage!=''">and logoImage=#{logoImage}</if>
+			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
+		</where>
+	</update>
+
+
+
+	<update id="update" parameterType="Club">
+		update club set
+		name=#{name},property=#{property},count=#{count},description=#{description},number=#{number},faceImage=#{faceImage},logoImage=#{logoImage},createTime=#{createTime}
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+		</where>
+	</update>
+
+	<select id="select" parameterType="Club" resultType="Club">
+		select *from
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="name!=null and name!=''">and name=#{name}</if>
+			<if test="property!=null and property!=''">and property=#{property}</if>
+			<if test="count!=null and count!=''">and count=#{count}</if>
+			<if test="description!=null and description!=''">and description=#{description}</if>
+			<if test="number!=null and number!=''">and number =#{number}</if>
+			<if test="faceImage!=null and faceImage!=''">and faceImage=#{faceImage}</if>
+			<if test="logoImage!=null and logoImage!=''">and logoImage=#{logoImage}</if>
+			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
+			<if test="isDeleted!=null and isDeleted!=''">and isDeleted=#{isDeleted}</if>
+		</where>
+	</select>
+</mapper>

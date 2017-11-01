@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.watermelon.mapper.AnswerMapper">
+
+	<sql id="columns">
+		questionId,userId,parentId,content,createTime,isDeleted
+	</sql>
+
+	<insert id="insert" parameterType="Answer">
+		insert into Answer(
+		<include refid="columns"></include>
+		)
+		values(#{questionId},#{userId},#{parentId},#{content},#{createTime},#{isDeleted});
+	</insert>
+
+
+	<update id="delete" parameterType="Answer">
+		update Answer set isDeleted=true
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="questionId!=null and questionId!=''">and questionId=#{questionId}</if>
+			<if test="userId!=null and userId!=''">and userId=#{userId}</if>
+			<if test="parentId!=null and parentId!=''">and parentId=#{parentId}</if>
+			<if test="content!=null and content!=''">and content=#{content}</if>
+			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
+		</where>
+	</update>
+
+
+
+	<update id="update" parameterType="Answer">
+		update Answer set
+		questionId=#{questionId},userId=#{userId},parentId=#{parentId},content=#{content},createTime=#{createTime}
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+		</where>
+	</update>
+
+	<select id="select" parameterType="Answer" resultType="Answer">
+		select *from
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="questionId!=null and questionId!=''">and questionId=#{questionId}</if>
+			<if test="userId!=null and userId!=''">and userId=#{userId}</if>
+			<if test="parentId!=null and parentId!=''">and parentId=#{parentId}</if>
+			<if test="content!=null and content!=''">and content=#{content}</if>
+			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
+			<if test="isDeleted!=null and isDeleted!=''">and isDeleted=#{isDeleted}</if>
+		</where>
+	</select>
+</mapper>

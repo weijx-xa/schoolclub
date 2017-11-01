@@ -32,5 +32,6 @@ tools/certs
 **/bin/**
 **/plclient/report/**
 target/**
+**/target/**
 **/META-INF/**
 tags

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.watermelon.mapper.SchoolMapper">
+
+	<sql id="columns">
+		name,college,Professional,isDeleted
+	</sql>
+
+	<insert id="insert" parameterType="School">
+		insert into School(
+		<include refid="columns"></include>
+		)
+		values(#{name},#{college},#{Professional},#{isDeleted});
+	</insert>
+
+
+	<update id="delete" parameterType="School">
+		update School set isDeleted=true
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="name!=null and name!=''">and name=#{name}</if>
+			<if test="college!=null and college!=''">and college=#{college}</if>
+			<if test="Professional!=null and Professional!=''">and Professional=#{Professional}</if>
+		</where>
+	</update>
+
+
+
+	<update id="update" parameterType="School">
+		update School set
+		name=#{name},college=#{college},Professional=#{Professional}
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+		</where>
+	</update>
+
+	<select id="select" parameterType="School" resultType="School">
+		select *from
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="name!=null and name!=''">and name=#{name}</if>
+			<if test="college!=null and college!=''">and college=#{college}</if>
+			<if test="Professional!=null and Professional!=''">and Professional=#{Professional}</if>
+			<if test="isDeleted!=null and isDeleted!=''">and isDeleted=#{isDeleted}</if>
+		</where>
+	</select>
+</mapper>
