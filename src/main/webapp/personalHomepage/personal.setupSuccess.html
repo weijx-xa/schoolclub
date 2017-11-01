@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>personal.setupSuccess</title>
+    <script src="../js/jquery-1.8.3.js" language="javascript" type="text/javascript"></script>
+    <script type="text/javascript">
+            $(document).ready(function () {
+            setTimeout(function(){//两秒后跳转
+                location.href = "../shouye.html";
+            },3000);
+
+        });
+
+
+    </script>
+    <style>
+        body{
+            background-color:#F4E8AE;
+        }
+       #successTip{
+           width:400px;
+           height:400px;
+           margin: 150px auto;
+           background: url("../p/source/personal-card.png") no-repeat 0 0px;
+           position: relative;
+        }
+        #content{
+            font-family: "microsoft yahei", "微软雅黑";
+            font-size: 20px;
+            width:300px;
+            height:200px;
+            position: absolute;
+           top:180px;
+            left:50px;
+        }
+        #countDown{
+            display: inline-block;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="successTip">
+    <div id="content">
+        <p>申请成功，请耐心等待申请结果。</p>
+        <p><span id="countDown">3</span>秒后跳转回首页</p>
+    </div>
+</div>
+</body>
+</html>
