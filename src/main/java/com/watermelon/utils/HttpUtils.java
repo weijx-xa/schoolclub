@@ -123,8 +123,7 @@ public class HttpUtils {
 
 	public static boolean checkEmailCode(HttpSession session, String code,String from) {
 		String emailCode = (String) session.getAttribute(HttpUtils.SESSION_KEY_EMAIL_CODE);
-		User user=(User)session.getAttribute("user");
-		String email=user.getEmail();
+		String email=(String) session.getAttribute("tempUser");
 		if (code.equals(emailCode)&&from.equals(email)) {
 			return true;
 		}

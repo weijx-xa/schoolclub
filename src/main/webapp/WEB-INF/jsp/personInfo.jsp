@@ -100,12 +100,7 @@
     <link type="text/css" href="${pageContext.request.contextPath}/css/personal.css" rel="stylesheet" />
 </head>
 <body>
-<div id="header1">
-    <div>
-        <a style="color: #eeeeee" href="${pageContext.request.contextPath}/">返回首页</a>
-        <a style="color: #eeeeee" href="${pageContext.request.contextPath}/user/login">登陆</a>
-    </div>
-</div>
+<%@include file="smallpage/head1.jsp"%>
 <div id="header2">
     <div id="logo">
         SchoolClub

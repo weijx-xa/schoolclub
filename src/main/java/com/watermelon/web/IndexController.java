@@ -50,7 +50,7 @@ public class IndexController {
 		HttpUtils.sendEmailCode(request.getSession(), "844704781@qq.com");
 		User user = new User();
 		user.setEmail(to);
-		webUtils.setSession(user);
+		request.getSession().setAttribute("tempUser",to);
 		JsonObject obj = new JsonObject();
 		obj.setStatus("true");
 		obj.setValue("邮件已发送给" + to + ",请及时查收");

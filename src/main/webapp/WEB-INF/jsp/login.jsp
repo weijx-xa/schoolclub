@@ -119,14 +119,14 @@
 			<span id="message" style="color:red">
 			   ${message }
 			</span>
-				<form action="">
+				<form action="${pageContext.request.contextPath}/user/login" method="post">
 					<!--   <h1>账户登录</h1>-->
 					<div class="Login-tel">
-						<input type="text" placeholder="telephone" name="login-telephone" />
+						<input type="text" placeholder="telephone" name="account" value="844704781@qq.com"/>
 					</div>
 					<div class="Login-password">
 						<input type="password" placeholder="Password"
-							name="login-password" />
+							name="password" value="123123"/>
 					</div>
 					<div class="Login-submit">
 						<input type="submit" value="Log in" />

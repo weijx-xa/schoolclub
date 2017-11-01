@@ -54,11 +54,18 @@ public class UserController {
 			modelAndView.addObject("message", "账号不符合规范");
 			return modelAndView;
 		}
+		List<User> userList= userService.selectList(user);
+		if(userList==null||userList.size()==0)
+		{
+			ModelAndView modelAndView = new ModelAndView("login");
+			modelAndView.addObject("message", "无此账号");
+			return modelAndView;
+		}
+		user=userList.get(0);
 		String salt = user.getSalt();
-		user.setPassword(DigestUtils.md5Hex(password + salt));
-		List<User> userList = userService.selectList(user);
-		if (!CollectionUtils.isEmpty(userList) && userList.size() > 0) {
-			webUtils.setSession(userList.get(0));
+		String newPassord=DigestUtils.md5Hex(password + salt);
+		if (newPassord.equals(user.getPassword())) {
+			webUtils.setSession(user);
 			ModelAndView modelAndView = new ModelAndView("redirect:/");
 			return modelAndView;
 		} else {
@@ -102,6 +109,14 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView("personInfo");
 		return modelAndView;
 	}
+	@RequestMapping("info")
+	public ModelAndView personInfo()
+	{
+		ModelAndView modelAndView = new ModelAndView("personInfo");
+		return modelAndView;
+	}
+	
+	
 	/**
 	 * 报名活动
 	 * 
