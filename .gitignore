@@ -31,5 +31,6 @@ tools/certs
 *.eml
 **/bin/**
 **/plclient/report/**
-
+target/**
+**/META-INF/**
 tags
