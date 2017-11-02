@@ -62,22 +62,23 @@
 		</where>
 	</update>
 
-	<update id="selectFirstListBySecondId">
+	<select id="selectFirstListBySecondId" parameterType="Long" resultType="User">
 		select user.id as id,user.email as email,user.password as password,user.salt as salt,user.headImage as headImage,user.nickName as nickName,user.gender as gender,user.phoneNum as phoneNum,user.createTime as createTime 
 		from UserActivity as useractivity
 		left join user as user on useractivity.userId=user.id
 		<where>
-		userclub.isDeleted=false and user.isDeleted=false
-            <if test="activityId!=null and activityId!=''">and activityId=#{activityId}</if>
+		useractivity.isDeleted=false and user.isDeleted=false
+            <if test="_parameter!=null and _parameter!=''">and useractivity.activityId=#{_parameter}</if>
 		</where>
-	</update>
+	</select>
 
-	<update id="selectSecondListByFirstId">
+	<select id="selectSecondListByFirstId" parameterType="Long" resultType="Activity">
         select activity.id as id,activity.name as name,activity.content as content,activity.beginDateTime as beginDateTime,activity.endDateTime as endDateTime,activity.image as image,activity.createTime as createTime
 		from UserActivity as useractivity
 		left join activity as activity on useractivity.activityId=activity.id
 		<where>
-            <if test="userId!=null and userId!=''">and userId=#{userId}</if>
+		useractivity.isDeleted=false and activity.isDeleted=false
+           <if test="_parameter!=null and _parameter!=''">and useractivity.userId=#{_parameter}</if>
 		</where>
-	</update>
+	</select>
 </mapper>

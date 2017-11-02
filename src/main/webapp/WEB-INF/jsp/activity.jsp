@@ -43,7 +43,7 @@
 			<p>活动时间：2016年6月12日下午14:00</p></li>
 	</ul>
 </div>
-<div class="pagecut">
+<!-- <div class="pagecut">
 	<ul>
 		<li><span>上一页</span></li>
 		<li><span>1</span></li>
@@ -53,7 +53,7 @@
 		<li><span>5</span></li>
 		<li><span>下一页</span></li>
 	</ul>
-</div>
+</div> -->
 <div id="leftBar">
 </div>
 <div id="rightBar">

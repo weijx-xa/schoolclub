@@ -152,7 +152,7 @@ a.club:hover .text{
 .club  li:hover .follow{
 	cursor:pointer;
 }
-.pagecut{
+/* .pagecut{
 	width:1200px;
 	height:100px;
 	line-height:35px;
@@ -180,4 +180,10 @@ a.club:hover .text{
 .pagecut ul li:hover{
 	background-color:#FC6;
 	cursor:pointer;
+} */
+#pagination{
+	width:auto;
+	height:30px;
+	text-align:center;
+	margin-top:-40px;
 }

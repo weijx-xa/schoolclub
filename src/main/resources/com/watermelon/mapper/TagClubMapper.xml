@@ -60,22 +60,23 @@
 		</where>
 	</update>
 
-	<update id="selectFirstListBySecondId">
+	<select id="selectFirstListBySecondId" parameterType="Long" resultType="Tag">
 		select tag.id as id,tag.name as name,user.createTime as createTime 
 		from TagClub as tagclub
 		left join tag as tag on tagclub.tagId=tag.id
 		<where>
 		tagclub.isDeleted=false and tag.isDeleted=false
-            <if test="clubId!=null and clubId!=''">and clubId=#{clubId}</if>
+          <if test="_parameter!=null and _parameter!=''">and tagclub.clubId=#{_parameter}</if>
 		</where>
-	</update>
+	</select>
 
-	<update id="selectSecondListByFirstId">
+	<select id="selectSecondListByFirstId" parameterType="Long" resultType="Club">
        select club.id as id,club.name as name,club.property as property,club.count as count,club.description as description,club.number as number,club.faceImage as faceImage,club.logoImage as logoImage,club.createTime as createTime
 		from TagClub as tagclub
 		left join club as club on userclub.clubId=club.id
 		<where>
-            <if test="userId!=null and userId!=''">and userId=#{userId}</if>
+		tagclub.isDeleted=false and club.isDeleted=false
+             <if test="_parameter!=null and _parameter!=''">and tagclub.tagId=#{_parameter}</if>
 		</where>
-	</update>
+	</select>
 </mapper>
