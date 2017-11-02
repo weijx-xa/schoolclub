@@ -1,5 +1,7 @@
 package com.watermelon.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageInfo;
+import com.watermelon.pojo.Activity;
 import com.watermelon.pojo.Club;
+import com.watermelon.service.ClubActivityService;
 import com.watermelon.service.ClubService;
 import com.watermelon.utils.JsonObject;
 
@@ -18,6 +22,9 @@ public class ClubController {
   
 	@Autowired
 	private ClubService clubService;
+	
+	@Autowired
+	private ClubActivityService clubActivityService;
 	
 	@RequestMapping("list")
 	public ModelAndView list()
@@ -46,9 +53,21 @@ public class ClubController {
 	
 	
 	@RequestMapping("detail")
-	public ModelAndView detail()
+	public ModelAndView detail(Long clubId)
 	{
+		if(clubId==null)
+		{
+			clubId=(long) 1;
+		}
+		Club club=new Club();
+		club.setId(clubId);
+		club=clubService.selectOne(club);
+		
+		List<Activity>list=clubActivityService.selectSecondListByFirstId(clubId);
+		
 		ModelAndView modelAndView=new ModelAndView("singleclub");
+		modelAndView.addObject("club",club);
+		modelAndView.addObject("list",list);
 		return modelAndView;
 	}
 	

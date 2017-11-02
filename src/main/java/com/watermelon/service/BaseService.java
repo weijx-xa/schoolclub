@@ -77,18 +77,34 @@ public class BaseService<T> {
 		return mapper.select(pojo);
 	}
 
+	
+	
+	public T selectOne(T pojo) {
+		List<T> list= mapper.select(pojo);
+		if(list==null||list.size()<1)
+		{
+			return null;
+		}
+		return list.get(0);
+	}
+
 	/**
 	 * 根据Id查询某条数据
 	 * 
 	 * @param id
 	 * @return
 	 */
-	public List<T> selectOnetById(Long id) {
+	public T selectOnetById(Long id) {
 		if (id == null) {
 			throw new RuntimeException("删除的Id不能为null");
 		}
 		T pojo = createInstanceAndSetId(id);
-		return selectList(pojo);
+		List<T>list= selectList(pojo);
+		if(list==null||list.size()==0)
+		{
+			return null;
+		}
+		return list.get(0);
 	}
 
 	/**
