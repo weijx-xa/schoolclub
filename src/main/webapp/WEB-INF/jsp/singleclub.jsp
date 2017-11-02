@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html>
 <head>
@@ -142,15 +143,18 @@
 			<div class="rightbtn"></div>
 			<div class="activity1">
 				<ul>
-     <c:forEach items="${list}" var="activity">
-     <li class="activity"><a href="#"><img src="${activity.image }" /></a>
-						<h3>${activity.name}</h3>
-						<p>社团：${club.name }</p>
-						<p>活动时间：${activity.beginDateTime }</p></li>
-     
-     </c:forEach>
-					
-				
+						<c:forEach items="${list}" var="activity">
+						<li class="activity"><a href="#"><img
+								src="${activity.image }" /></a>
+							<h3>${activity.name}</h3>
+							<p>社团：${club.name }</p>
+							<p>
+								活动时间：
+								<fmt:formatDate value="${activity.beginDateTime }"
+									pattern="yyyy-MM-dd HH:mm:ss" />
+							</p></li>
+
+					</c:forEach>
 				</ul>
 			</div>
 		</div>

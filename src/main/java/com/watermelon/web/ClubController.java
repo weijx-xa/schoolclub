@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.watermelon.pojo.Activity;
 import com.watermelon.pojo.Club;
@@ -62,9 +63,8 @@ public class ClubController {
 		Club club=new Club();
 		club.setId(clubId);
 		club=clubService.selectOne(club);
-		
+		PageHelper.startPage(1,3);
 		List<Activity>list=clubActivityService.selectSecondListByFirstId(clubId);
-		
 		ModelAndView modelAndView=new ModelAndView("singleclub");
 		modelAndView.addObject("club",club);
 		modelAndView.addObject("list",list);
