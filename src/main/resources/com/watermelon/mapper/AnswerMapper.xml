@@ -39,15 +39,18 @@
 	</update>
 
 	<select id="select" parameterType="Answer" resultType="Answer">
-		select *from Answer
+		select answer.id,answer.questionId,answer.userId,answer.parentId,answer.content,answer.createTime,
+		user.email,user.nickName,user.headImage
+		from Answer as answer
+		left join User as user on answer.userId=user.id
 		<where>
-			<if test="id!=null and id!=''">and id=#{id}</if>
-			<if test="questionId!=null and questionId!=''">and questionId=#{questionId}</if>
-			<if test="userId!=null and userId!=''">and userId=#{userId}</if>
-			<if test="parentId!=null and parentId!=''">and parentId=#{parentId}</if>
-			<if test="content!=null and content!=''">and content=#{content}</if>
-			<if test="createTime!=null and createTime!=''">and createTime=#{createTime}</if>
-			<if test="isDeleted!=null and isDeleted!=''">and isDeleted=#{isDeleted}</if>
+			<if test="id!=null and id!=''">and answer.id=#{id}</if>
+			<if test="questionId!=null and questionId!=''">and answer.questionId=#{questionId}</if>
+			<if test="userId!=null and userId!=''">and answer.userId=#{userId}</if>
+			<if test="parentId!=null and parentId!=''">and answer.parentId=#{parentId}</if>
+			<if test="content!=null and content!=''">and answer.content=#{content}</if>
+			<if test="createTime!=null and createTime!=''">and answer.createTime=#{createTime}</if>
+			<if test="isDeleted!=null and isDeleted!=''">and answer.isDeleted=#{isDeleted}</if>
 		</where>
 	</select>
 </mapper>

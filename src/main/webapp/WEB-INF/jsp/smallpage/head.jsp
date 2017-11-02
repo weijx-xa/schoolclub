@@ -1,6 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<script src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"
+	type="text/javascript"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script>
+
+$(function(){
+	var i=0;
+	setInterval(function(){
+		$("#unprocessedMessage").css("color",(i%2==0?'red':'blue'));
+		i++;
+	},500);
+});
+</script>
 <div id="wrapper">
 	<div class="header">
 		<a id="setUpClub" style="color: #eeeeee"
@@ -9,7 +21,15 @@
 		<c:if test="${ not empty sessionScope.user}">
 				 <a
 			id="login" style="color: #eeeeee"
-			href="${pageContext.request.contextPath}/user/info">${sessionScope.user.email }</a>
+			href="${pageContext.request.contextPath}/user/info">
+			<c:if test="${ not empty sessionScope.user.nickName }">
+			    ${sessionScope.user.nickName }
+			</c:if>
+			<c:if test="${empty sessionScope.user.nickName  }">
+			${sessionScope.user.email }
+			</c:if>
+			
+			</a>
 		</c:if>
 		<c:if test="${empty sessionScope.user}">
 				 <a

@@ -1,7 +1,11 @@
 package com.watermelon.web;
 
+import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +16,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.watermelon.pojo.Activity;
+import com.watermelon.pojo.Answer;
 import com.watermelon.pojo.Club;
+import com.watermelon.pojo.Question;
+import com.watermelon.pojo.User;
+import com.watermelon.service.AnswerService;
 import com.watermelon.service.ClubActivityService;
 import com.watermelon.service.ClubService;
+import com.watermelon.service.QuestionService;
 import com.watermelon.utils.JsonObject;
 
 @Controller
@@ -27,13 +36,26 @@ public class ClubController {
 	@Autowired
 	private ClubActivityService clubActivityService;
 	
+	@Autowired
+	private QuestionService questionService;
+	
+	@Autowired
+	private AnswerService answerService;
+	
+	@Autowired
+	private WebUtils webUtils;
+	
 	@RequestMapping("list")
 	public ModelAndView list()
 	{
 		ModelAndView modelAndView=new ModelAndView("club");
 		return modelAndView;
 	}
-	
+	/**
+	 * 社团分页数据
+	 * @param pageNum
+	 * @return
+	 */
 	@RequestMapping(value="getData",method=RequestMethod.POST)
 	public @ResponseBody String getData(Integer pageNum)
 	{
@@ -51,10 +73,15 @@ public class ClubController {
 		return JsonObject.toJson(jsonObject);
 	}
 	
+
 	
-	
+	/**
+	 * 某个社团详情页面
+	 * @param clubId
+	 * @return
+	 */
 	@RequestMapping("detail")
-	public ModelAndView detail(Long clubId)
+	public ModelAndView detail(Long clubId,Integer pageNum)
 	{
 		if(clubId==null)
 		{
@@ -65,12 +92,110 @@ public class ClubController {
 		club=clubService.selectOne(club);
 		PageHelper.startPage(1,3);
 		List<Activity>list=clubActivityService.selectSecondListByFirstId(clubId);
+		if(pageNum==null||pageNum<1)
+		{
+			pageNum=1;
+		}
+		Question question=new Question();
+		question.setIsDeleted(false);
+		question.setClubId(clubId);
+		PageInfo<Question>pageInfo=questionService.page(1, 3*pageNum, question, "createTime desc");
+		pageInfo=addAnswerList(pageInfo);//加入回复
 		ModelAndView modelAndView=new ModelAndView("singleclub");
 		modelAndView.addObject("club",club);
 		modelAndView.addObject("list",list);
+		modelAndView.addObject("pageNum", pageNum);
+		modelAndView.addObject("pageInfo",pageInfo);
 		return modelAndView;
 	}
 	
+	
+	private  PageInfo<Question> addAnswerList(PageInfo<Question>pageInfo){
+		List<Question>questionList=pageInfo.getList();
+		for(Question question:questionList)
+		{
+			Long questionId=question.getId();
+			Answer answer=new Answer();
+			answer.setQuestionId(questionId);
+			answer.setIsDeleted(false);
+			List<Answer>answerList=answerService.selectList(answer, "createTime desc");
+			question.setAnswerList(answerList);
+		}
+		return pageInfo;
+	}
+	
+	
+//	@RequestMapping(value="nextPage",method=RequestMethod.POST)
+//	public @ResponseBody String nextPage(Long clubId,Integer pageNum)
+//	{
+//		if(pageNum==null||pageNum<1)
+//		{
+//			pageNum=1;
+//		}
+//		Question question=new Question();
+//		question.setIsDeleted(false);
+//		question.setClubId(clubId);
+//		PageInfo<Question>pageInfo=questionService.page(1, 3*pageNum, question, "createTime desc");
+//	}
+//	
+	
+	@RequestMapping(value="askClubFormClub",method=RequestMethod.POST)
+	public @ResponseBody String askClubFormClub(String content,Long clubId,HttpServletRequest request)
+	{
+		User user=(User) webUtils.getSession("user");
+		if(user==null)
+		{
+			return JsonObject.toErrorJson("请先登录");
+		}
+		Long userId=user.getId();
+		
+		if(clubId==null||StringUtils.isEmpty(content))
+		{
+			return JsonObject.toErrorJson("数据不能为null");
+		}
+		Club club=new Club();
+		club.setId(clubId);
+		if(!clubService.isExisted(club))
+		{
+			return JsonObject.toErrorJson("评论的社团不存在");
+		}
+		Question question=new Question();
+		question.setContent(content);
+		question.setClubId(clubId);
+		question.setUserId(userId);
+		question.setCreateTime(new Date());
+		question.setIsDeleted(false);
+		questionService.insert(question);
+		return JsonObject.toSuccessJson("评论成功");
+		
+	}
+	
+	
+	
+	@RequestMapping(value="askUserSubmit",method=RequestMethod.POST)
+	public @ResponseBody String askUserSubmit(String content,Long questionId,HttpServletRequest request){
+		
+		User user=(User) webUtils.getSession("user");
+		if(user==null)
+		{
+			return JsonObject.toErrorJson("请先登录");
+		}
+		Long userId=user.getId();
+		if(questionId==null||"".equals(content))
+		{
+			return JsonObject.toErrorJson("数据不能为null");
+		}
+		
+		Answer answer=new Answer();
+		answer.setContent(content);
+		answer.setCreateTime(new Date());
+		answer.setIsDeleted(false);
+		answer.setQuestionId(questionId);
+		answer.setUserId(userId);
+		answerService.insert(answer);
+		return JsonObject.toSuccessJson("回复成功");
+		
+	}
 	@RequestMapping("create1")
 	public ModelAndView create1()
 	{

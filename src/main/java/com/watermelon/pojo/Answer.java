@@ -1,5 +1,6 @@
 package com.watermelon.pojo;
 
+import java.util.List;
 
 public class Answer extends BaseEntity {
 	private static final long serialVersionUID = 1L;
@@ -7,6 +8,46 @@ public class Answer extends BaseEntity {
 	private Long userId;
 	private Long parentId;
 	private String content;
+	private List<Answer> answerList;
+	private String email;
+	private String nickName;
+	private String headImage;
+	
+	
+	
+	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	public String getHeadImage() {
+		return headImage;
+	}
+
+	public void setHeadImage(String headImage) {
+		this.headImage = headImage;
+	}
+
+	public List<Answer> getAnswerList() {
+		return answerList;
+	}
+
+	public void setAnswerList(List<Answer> answerList) {
+		this.answerList = answerList;
+	}
 
 	public Long getQuestionId() {
 		return questionId;
