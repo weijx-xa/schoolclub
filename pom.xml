@@ -174,12 +174,21 @@
 			<artifactId>oro</artifactId>
 			<version>2.0.8</version>
 		</dependency>
-       <!-- apache加密工具包 -->
+		<!-- apache加密工具包 -->
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
 			<version>1.8</version>
 		</dependency>
+
+
+		<!-- redis 驱动包 --> 
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.7.2</version>
+		</dependency>
+
 
 	</dependencies>
 
