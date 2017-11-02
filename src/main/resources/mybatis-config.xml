@@ -8,8 +8,9 @@
 	<typeAliases>
 		<package name="com.watermelon.pojo" />
 	</typeAliases>
-	<!-- <plugins> <plugin interceptor="com.github.pagehelper.PageHelper"></plugin> 
-		</plugins> -->
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageHelper"></plugin>
+	</plugins>
 
 
 	<mappers>

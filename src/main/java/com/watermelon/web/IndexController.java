@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.watermelon.pojo.User;
+import com.watermelon.service.UserService;
 import com.watermelon.utils.HttpUtils;
 import com.watermelon.utils.JsonObject;
 import com.watermelon.utils.RegexpUtils;
@@ -21,6 +22,9 @@ public class IndexController {
 	@Autowired
 	private WebUtils webUtils;
 
+	@Autowired
+	private UserService userService;
+	
 	@RequestMapping("/")
 	public ModelAndView root(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView modelAndView = new ModelAndView("redirect:/index");
@@ -50,6 +54,13 @@ public class IndexController {
 		HttpUtils.sendEmailCode(request.getSession(), "844704781@qq.com");
 		User user = new User();
 		user.setEmail(to);
+		if(userService.isExisted(user))
+		{
+			JsonObject obj = new JsonObject();
+			obj.setStatus("false");
+			obj.setValue("该邮箱已经注册");
+			return JsonObject.toJson(obj);
+		}
 		request.getSession().setAttribute("tempUser",to);
 		JsonObject obj = new JsonObject();
 		obj.setStatus("true");

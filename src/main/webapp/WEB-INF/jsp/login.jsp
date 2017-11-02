@@ -22,13 +22,30 @@
 	$(document).ready(function() {
 		menu();
 	});
+	var countdown=60;
+    function settimefunction(obj) {
+        if (countdown == 0) {
+            obj.removeAttribute("disabled");
+            obj.value="免费获取验证码";
+            countdown = 60;
+            return;
+        } else {
+            obj.setAttribute("disabled", true);
+            obj.value="重新发送(" + countdown + ")";
+            countdown--;
+        }
+        setTimeout(function() {
+                    settimefunction(obj) }
+                ,1000)
+    }
+	
 	function menu() {
 		$('.list >li').hover(function() {
 			$(this).children('.hide').toggle();
 			$(this).children('.hengtiao').toggle();
 		});
 	};
-	function settime(data)
+	function settime(obj)
 	{
 		var to=$("#registerEmail").val();
 		$.ajax({
@@ -42,10 +59,11 @@
 				if(data.status=="true")
 					{
 					    //调用倒计时方法，下面的alert可以注释
-					    alert("验证码发送成功");
+					  //  alert("验证码发送成功");
+					    settimefunction(obj);
 					}
 				else{
-					alert("邮件验证码发送失败");
+					alert(data.value);
 				}
 			},
 			error:function(){
@@ -168,24 +186,6 @@
 					<div class="Register-code">
 						<input type="text" placeholder="请输入验证码" name="code" /> <input
 							type="button" id="code-btn" value="获取验证码" onclick="settime(this)" />
-							<script type="text/javascript">
-                        var countdown=60;
-                        function settime(obj) {
-                            if (countdown == 0) {
-                                obj.removeAttribute("disabled");
-                                obj.value="免费获取验证码";
-                                countdown = 60;
-                                return;
-                            } else {
-                                obj.setAttribute("disabled", true);
-                                obj.value="重新发送(" + countdown + ")";
-                                countdown--;
-                            }
-                            setTimeout(function() {
-                                        settime(obj) }
-                                    ,1000)
-                        }
-                    </script>
 					</div>
 					<div class="register-submit">
 						<input type="submit" value="注册" />
