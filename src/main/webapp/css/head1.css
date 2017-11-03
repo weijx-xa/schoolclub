@@ -33,11 +33,11 @@
 	height:40px;
 
 	right:0;
-	background-color:#f7fbfd;
+	
 	top:30px;
-	//border: 1px ;
+	
 	border-top: none;
-	background: #FFFFFF;
+	background: transparent;
 //  display: none;
 }
 #unprocessedMessageWrapper a{
@@ -45,7 +45,7 @@
 	height:40px;
 	text-align: center;
 	line-height: 40px;
-	background: transparent;
+	background: #FFFFFF;
 	color: #111111;
 }
 #nav {

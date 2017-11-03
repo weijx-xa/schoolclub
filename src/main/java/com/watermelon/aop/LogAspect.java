@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.watermelon.pojo.User;
 import com.watermelon.utils.JsonObject;
 
-
+@Aspect
 public class LogAspect {
 
 	

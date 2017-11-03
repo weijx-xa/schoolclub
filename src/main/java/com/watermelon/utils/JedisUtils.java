@@ -78,6 +78,31 @@ public class JedisUtils {
         }
         return set;
     }
+    
+    //从key指向的set集合中取出所有数据并删除此key指向的set集合
+    @SuppressWarnings("unchecked")
+    public static Set<String> smembers(String key) {
+        Jedis jedis = null;
+        Set<String> set = null;
+        try {
+            jedis = getJedis();
+            Transaction tx = jedis.multi();
+            tx.smembers(key);
+            List<Object> result = tx.exec();
+            if (result == null || result.isEmpty()) {
+                logger.error("smembersAndDel：从缓存中取出数据数据的事务失败");
+            } else {
+                set = (Set<String>) result.get(0);
+                logger.debug("smembersAndDel：从缓存中取出数据删除了key，key：{}，value：{}", key, set);
+            }
+
+        } catch (Exception e) {
+            logger.error("smembersAndDel：从缓存中取出数据数据是出现异常", e);
+        } finally {
+            closeQuietly(jedis);
+        }
+        return set;
+    }
 
     public static void setex(String key, int expire, String value) {
         Jedis jedis = null;

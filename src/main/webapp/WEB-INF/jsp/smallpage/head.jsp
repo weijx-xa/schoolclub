@@ -19,7 +19,7 @@ $(function(){
 		i++;
 	},500);
 });
-
+var i=1;
 function getNotifications(){
 	$.ajax({
 		type:"post",
@@ -31,13 +31,19 @@ function getNotifications(){
 					
 				      if(data.value!=null){
 				    	  var audio = "<audio src=\"${pageContext.request.contextPath}/images//source/tips.mp3\" autoplay=\"autoplay\"></audio>";
-	                       $("#audio").append(audio);
-	                       if(data.value!=null&&data.value.length>0)
+	                      if(data.value.number==1)
+	                    	  {
+	                    	  $("#audio").html("");
+	                    	   $("#audio").append(audio);
+	                    	  }
+				    	 
+	                       if(i==1&&data.value.list!=null&&data.value.list.length>0)
 	                    	   {
 	                    	   var path="${pageContext.request.contextPath}"  ;
 	                    	   
-	                    	   var a=" <a id='unprocessedMessage' href='  "+path+"  /user/message\'>您有消息未处理</a>  ";
-	                    	   $("#unprocessedMessageWrapper").append(a);
+	                    	   var a=" <a id='unprocessedMessage' href='"+path+"/user/message\'>您有消息未处理</a>  ";
+	                    	   $("#unprocessedMessageWrapper").html(a);
+	                    	    i=0;
 	                    	   }
 				      }
 				}

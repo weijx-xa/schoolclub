@@ -198,8 +198,10 @@ public class ClubController {
 		else{
 			username=user.getNickName();
 		}
+		notification.put("byName", username);
+		notification.put("byId", user.getId());
 		notification.put("questionId",param.getId());
-		notification.put("content",username+":"+param.getContent());
+		notification.put("content",param.getContent());
 		
 		//找出所有要通知的对象
 		UserClub userClub=new UserClub();
@@ -260,6 +262,8 @@ public class ClubController {
 		else{
 			username=user.getNickName();
 		}
+		notification.put("byName", username);
+		notification.put("byId", user.getId());
 		notification.put("answerId",param.getId());
 		notification.put("content",username+":"+param.getContent());
 		Question question=new Question();

@@ -1,7 +1,9 @@
 package com.watermelon.web;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -74,10 +76,15 @@ public class IndexController {
 	@RequestMapping(value = "getNotifications", method = RequestMethod.POST)
 	public @ResponseBody String getNotifications(HttpServletRequest request) {
 		User user = (User) webUtils.getSession("user");
+		Integer number=(Integer) request.getSession().getAttribute("number");
+		if(number==null||number==0)
+		{
+			number=1;
+		}
 		if (user == null) {
 			return JsonObject.toErrorJson("用户未登录");
 		}
-		Set<String> datas = JedisUtils.smembersAndDel("notification_" + user.getId());
+		Set<String> datas = JedisUtils.smembers("notification_" + user.getId());
 		if (datas == null || datas.size() < 1) {
 			return JsonObject.toSuccessJson(null);
 		}
@@ -86,10 +93,22 @@ public class IndexController {
 			Object obj = JsonUtils.toBean(str, Object.class);
 			list.add(obj);
 		}
+		Integer size=(Integer) request.getSession().getAttribute("size");
 		if(list==null||list.size()<1)
 		{
 			return JsonObject.toErrorJson(list);
 		}
-		return JsonObject.toSuccessJson(list);
+		if(size==null||list.size()>size)
+		{
+			//这次的数据大于上次的
+			//响,更新数据长度
+			number=1;
+			request.getSession().setAttribute("size", list.size());
+		}
+		Map<String, Object>map=new HashMap<>();
+		map.put("list",list);
+		map.put("number",number++);
+		request.getSession().setAttribute("number",number);
+		return JsonObject.toSuccessJson(map);
 	}
 }
