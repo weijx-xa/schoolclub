@@ -19,7 +19,8 @@
 <script src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
 <script src="${pageContext.request.contextPath}/js/laypage/laypage.js" language="javascript" type="text/javascript"></script>
 <script>
-	//单次单选弹框
+ 	//单次单选弹框
+	$(function () {
 	$(".userName").click(
 					function() {
 						var onlyChoseAlert = simpleAlert({
@@ -36,6 +37,21 @@
 							}
 						})
 					})
+	}) 
+	$(function(){
+	    $(".replyButton").click(function(){
+	        var focus = $(this).parents("ul li").find(".replyArea");
+	        if(focus.css("display")=="none")
+	        {
+	            focus.show();
+	            this.innerHTML = "收起";
+	        }else
+	        {
+	            focus.hide();
+	            this.innerHTML = "回复";
+	        }
+	    });
+	});
 </script>
 </head>
 <body>
@@ -45,25 +61,22 @@
 			<img src="${pageContext.request.contextPath}/images/source/logo.png"
 				style="width: 180px; height: 80px">
 		</div>
-		<div id="navilist">
-			<p>@你</p>
-		</div>
-		<div id="navilist">
+		<ul id="navilist">
+			<li><a href="${pageContext.request.contextPath}/user/message">@你</a></li>
+			<li>
 			<p>
 				<a href="${pageContext.request.contextPath}/user/clubMessage">社团消息</a>
 			</p>
-		</div>
-
-		<div id="navilist">
+			</li>
+			<li>
 			<p>
 				<a href="">活动消息</a>
 			</p>
-		</div>
-	</div>
+			</li>
+		</ul>
 	<div id="content">
-	<a href="${pageContext.request.contextPath}/user/delMessage">清空所有消息</a>
 		<ul id="messageList">
-
+	
 		</ul>
 
     
@@ -110,11 +123,18 @@
                			var p2="</p>";	
                			var div2="</div>";
                			var div3="<div class=\"handleButton\">";
-              			var button1="<button class=\"agree\">回复</button>";
-              			var button2="<button class=\"agree\">已读</button>";
+              			var button1="<button class=\"replyButton\">回复</button>";
+              			var button2="<button class=\"readButton\">已读</button>";
                			var div4="</div>";
+               			var div5="<div class=\"replyArea\">";
+               			var form1="<form action=\"\">"
+               			var textarea1="<textarea class=\"replyTextarea\">";
+               			var textarea2="</textarea>";
+               			var input1="<input type=\"submit\" class=\"replysubmit\" value=\"提交评论\" />";
+               			var form2="</form>";
+               			var div6="</div>";
                			var li2="</li>";
-               			str+=(li1+div1+p1+a+p2+div2+div3+button1+button2+div4+li2);
+               			str+=(li1+div1+p1+a+p2+div2+div3+button1+button2+div4+div5+form1+textarea1+textarea2+input1+form2+div6+li2);
                     	   }
                        else{
                     	   var	 li1="	<li class=\"list\">";
@@ -124,11 +144,18 @@
                   			var p2="</p>";	
                   			var div2="</div>";
                   			var div3="<div class=\"handleButton\">";
-                  			var button1="<button class=\"agree\">回复</button>";
-                  			var button2="<button class=\"agree\">已读</button>";
+                  			var button1="<button class=\"replyButton\">回复</button>";
+                  			var button2="<button class=\"readButton\">已读</button>";
                   			var div4="</div>";
+                  			var div5="<div class=\"replyArea\">";
+                   			var form1="<form action=\"\">"
+                   			var textarea1="<textarea class=\"replyTextarea\">";
+                   			var textarea2="</textarea>";
+                   			var input1="<input type=\"submit\" class=\"replysubmit\" value=\"提交评论\" />";
+                   			var form2="</form>";
+                   			var div6="</div>";
                   			var li2="</li>";
-                  			str+=(li1+div1+p1+a+p2+div2+div3+button1+button2+div4+li2);
+                  			str+=(li1+div1+p1+a+p2+div2+div3+button1+button2+div4+div5+form1+textarea1+textarea2+input1+form2+div6+li2);
                        }
                       $("#messageList").append(str);
             		}
@@ -140,7 +167,9 @@
         
         
     </script>
-    
+    <div id=delMessage>
+    <a  href="${pageContext.request.contextPath}/user/delMessage">清空所有消息</a>
+    </div>
     
     
     

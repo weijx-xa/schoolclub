@@ -120,8 +120,8 @@ body{
 	height:450px;
 	background-color: #ffffff;
 	position:absolute;
-	top:155px;
-	left:520px;
+	top:153px;
+	right:200px;
 }
 .info:after{
 	content:"";

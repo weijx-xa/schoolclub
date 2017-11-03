@@ -46,20 +46,19 @@
     <div id="logo">
         <img src="${pageContext.request.contextPath}/images/source/logo.png" style="width: 180px;height: 80px">
     </div>
-   <div id="navilist">
-			<p><a href="${pageContext.request.contextPath}/user/message">@你</a></p>
-		</div>
-		<div id="navilist">
+  <ul id="navilist">
+			<li><a href="${pageContext.request.contextPath}/user/message">@你</a></li>
+			<li>
 			<p>
-				社团消息
+				<a href="${pageContext.request.contextPath}/user/clubMessage">社团消息</a>
 			</p>
-		</div>
-
-		<div id="navilist">
+			</li>
+			<li>
 			<p>
-				<a href="#">活动消息</a>
+				<a href="">活动消息</a>
 			</p>
-		</div>
+			</li>
+		</ul>
 </div>
 <div id="content">
     <ul id="messageList">

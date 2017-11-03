@@ -117,12 +117,14 @@ body{
 #side dd a:hover{
     color:#F39C0C;
 }
-#side .setupClub{
+#side .setupClub,
+#side .messageReminding{
     font-size:18px;
     height:35px;
     line-height: 35px;
 }
-#side .setupClub a:hover{
+#side .setupClub a:hover,
+#side .messageReminding a:hover{
     color:#F39C0C;
     font-weight: bold;
 }

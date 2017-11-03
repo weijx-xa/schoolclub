@@ -1,4 +1,4 @@
-*{
+ *{
     padding: 0;
     margin: 0;
 }
@@ -32,20 +32,38 @@ body{
 }
 #navilist{
     height:90px;
-    width:700px;
-// border:1px solid yellow;
+    width:1000px;
+ //   border:1px solid yellow;
     margin: 0 auto;
-    overflow: hidden;
+    list-style:none;
+   /*  overflow: hidden; */
 }
-#navilist p{
+#navilist li{
+	display:inline-block;
+	width:200px;
+    height:60px;
+ //    border:1px solid #000000;
+     font-size: 35px;
+    text-align: center;
+     margin-left: 10%;
+    margin-top:15px;
+}
+#navilist li a{
+	text-decoration:none;
+	color:#666666;
+}
+.astyle{
+	border-bottom:2px solid #666666;
+}
+/* #navilist p{
     width:200px;
     height:60px;
-   // border:1px solid #000000;
+    border:1px solid #000000;
     margin-left: 20%;
     margin-top:15px;
     font-size: 35px;
     text-align: center;
-}
+} */
 #content{
     width:900px;
     height:900px;
@@ -55,7 +73,7 @@ body{
 }
 #messageList{
     width:850px;
-    height:800px;
+    height:auto;
     background-color: #ffffff;
  //   border:1px solid red;
     font-family: "微软雅黑";
@@ -65,10 +83,10 @@ body{
 }
 #messageList li{
     width:820px;
-    height:50px;
+    height:auto;
     border-bottom:1px solid #BBBBBB;
     padding: 5px;
-    padding-bottom: 15px;
+    padding-bottom: 35px;
     margin: 10px auto;
     position: relative;
 }
@@ -109,6 +127,36 @@ body{
     background: #F39C0C;
     color: #FFFFFF;
 }
+.handleButton .replyButton{
+	 border:none;
+    background: #67376D;
+    color: #FFFFFF;
+}
+.handleButton .readButton{
+	border:none;
+    background: #F39C0C;
+    color: #FFFFFF;
+}
+.replyArea{
+	display:none;
+	position:relative;
+}
+.replyTextarea{
+	 width:720px;
+    height:50px;
+    margin-top:35px;
+}
+.replysubmit{
+	width:70px;
+	height:30px;
+	text-align: center;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	background-color: #ffffff;
+	border: 1px solid rgb(105,57,111);
+	position:absolute;
+	margin-top:70px;
+}
 #nextPage{
     width:800px;
     height:35px;
@@ -137,4 +185,18 @@ body{
 #nextPage ul li:hover {
     background-color: #FC6;
     cursor: pointer;
+}
+#delMessage{
+	border:none;
+    background: #67376D;
+    width:150px;
+    height:30px;
+    line-height:30px;
+     text-align: center;
+     margin-left:75%;
+     margin-top:15px;
+}
+#delMessage a{
+	text-decoration:none;
+	color:#ffffff;
 }

@@ -7,7 +7,7 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/images/lianxiwomen.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/images/personal.css" />
-    <script src="../js/jquery-1.8.3.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
     <script>
         <!--菜单样式-->
         $(document).ready(function(){

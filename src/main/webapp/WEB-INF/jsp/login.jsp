@@ -12,9 +12,7 @@
 	href="${pageContext.request.contextPath}/css/lianxiwomen.css" rel="stylesheet" />
 <script src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"
 	language="javascript" type="text/javascript"></script>
-<script
-	src="${pageContext.request.contextPath}/js/jquery.luara.0.0.1.min.js"
-	language="javascript" type="text/javascript"></script>
+ <script src="${pageContext.request.contextPath}/js/lunbo.js" language="javascript" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		menu();
@@ -87,17 +85,6 @@
 			$("#registerForm").hide(500);
 		});
 	});
-//	$(function() {
-		<!--调用Luara示例-->
-//		$("#left-slide").luara({
-//			width : "700",
-//			height : "560",
-//			interval : 4500,
-//			selected : "seleted",
-//			deriction : "left"
-//			});
-
-//	});
 </script>
 </head>
 
@@ -105,23 +92,20 @@
 <%@include file="smallpage/head.jsp"%>
 	<div class="container">
 		<div id="left-slide">
-			<ul>
-				<li><img
-					src="${pageContext.request.contextPath}/images/source/loginLunbo01.png" /></li>
-				<li><img
-					src="${pageContext.request.contextPath}/images/source/loginLunbo02.png" /></li>
-				<li><img
-					src="${pageContext.request.contextPath}/images/source/loginLunbo03.png" /></li>
-				<li><img
-					src="${pageContext.request.contextPath}/images/source/loginLunbo04.png" /></li>
-			</ul>
-			<ol>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ol>
-		</div>
+        <ul class="banner-inner">
+            <li><img src="${pageContext.request.contextPath}/images/source/a1.png"  alt="" name="0"/></li>
+            <li><img src="${pageContext.request.contextPath}/images/source/a2.png"  alt="" name="1" /></li>
+            <li><img src="${pageContext.request.contextPath}/images/source/a3.png"  alt="" name="2"/></li>
+            <li><img src="${pageContext.request.contextPath}/images/source/a4.png"  alt="" name="3"/></li>
+        </ul>
+        <ol class="pageCtrl">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+    </script>
 		<div id="loginRegister">
 			<div id="loginRegisterBg">
 				<img src="${pageContext.request.contextPath}/images/source/car.gif" />
