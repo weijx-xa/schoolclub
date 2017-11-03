@@ -1,28 +1,38 @@
 package com.watermelon.utils;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.mysql.fabric.xmlrpc.base.Array;
+
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.Transaction;
 
 public class JedisUtils {
 
     private static final Logger logger = LogManager.getLogger(JedisUtils.class);
 
-    private static JedisPool jedisPool = new JedisPool("localhost");
+    private static JedisPool jedisPool = new JedisPool("115.28.157.231");
 
+    
+    
     private JedisUtils() {
-
     }
 
     //务必使用过之后要jedis.close()关闭连接
     public static Jedis getJedis() {
-        return jedisPool.getResource();
+        Jedis jedis= jedisPool.getResource();
+        jedis.auth("laimin123");
+        return jedis;
     }
 
     //向key指向的set集合中插入若干条数据
@@ -128,5 +138,4 @@ public class JedisUtils {
             }
         }
     }
-
 }

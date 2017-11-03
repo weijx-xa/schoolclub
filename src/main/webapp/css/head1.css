@@ -31,10 +31,11 @@
 	position: absolute;
 	width:150px;
 	height:40px;
-//    border: 1px solid red;
+    border: 1px solid red;
 	right:0;
+	background-color:#f7fbfd;
 	top:30px;
-	border: 1px solid #4D4D4D;
+	//border: 1px ;
 	border-top: none;
 	background: #FFFFFF;
 //  display: none;

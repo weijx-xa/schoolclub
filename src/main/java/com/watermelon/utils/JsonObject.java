@@ -2,11 +2,10 @@ package com.watermelon.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 public class JsonObject {
 	private String status;
 	private Object value;
-
+	
 	public String getStatus() {
 		return status;
 	}
@@ -49,5 +48,7 @@ public class JsonObject {
 		jsonObject.setValue(obj);
 		return JsonObject.toJson(jsonObject);
 	}
+
+
 
 }

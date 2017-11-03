@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	String path = request.getContextPath();
-%>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>login</title>
-<link type="text/css" href="<%=path%>/css/login.css" rel="stylesheet" />
+<link type="text/css" href="${pageContext.request.contextPath}/css/login.css" rel="stylesheet" />
 <link type="text/css"
 	href="${pageContext.request.contextPath}/css/head1.css" rel="stylesheet" />
 <link type="text/css"
@@ -50,7 +47,7 @@
 		var to=$("#registerEmail").val();
 		$.ajax({
 			type:"post",
-			url:'<%=path%>/sendEmail',
+			url:'${pageContext.request.contextPath}/sendEmail',
 			data:{
 				to:to
 			},
@@ -90,17 +87,17 @@
 			$("#registerForm").hide(500);
 		});
 	});
-	$(function() {
+//	$(function() {
 		<!--调用Luara示例-->
-		$("#left-slide").luara({
-			width : "700",
-			height : "560",
-			interval : 4500,
-			selected : "seleted",
-			deriction : "left"
-		});
+//		$("#left-slide").luara({
+//			width : "700",
+//			height : "560",
+//			interval : 4500,
+//			selected : "seleted",
+//			deriction : "left"
+//			});
 
-	});
+//	});
 </script>
 </head>
 

@@ -1,7 +1,9 @@
 package com.watermelon.web;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,10 +22,13 @@ import com.watermelon.pojo.Answer;
 import com.watermelon.pojo.Club;
 import com.watermelon.pojo.Question;
 import com.watermelon.pojo.User;
+import com.watermelon.pojo.UserClub;
 import com.watermelon.service.AnswerService;
 import com.watermelon.service.ClubActivityService;
 import com.watermelon.service.ClubService;
 import com.watermelon.service.QuestionService;
+import com.watermelon.service.UserClubService;
+import com.watermelon.utils.JedisUtils;
 import com.watermelon.utils.JsonObject;
 
 @Controller
@@ -44,6 +49,9 @@ public class ClubController {
 	
 	@Autowired
 	private WebUtils webUtils;
+	
+	@Autowired
+	private UserClubService userClubService;
 	
 	@RequestMapping("list")
 	public ModelAndView list()
@@ -138,7 +146,13 @@ public class ClubController {
 //		PageInfo<Question>pageInfo=questionService.page(1, 3*pageNum, question, "createTime desc");
 //	}
 //	
-	
+	/**
+	 * 评论社团
+	 * @param content
+	 * @param clubId
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="askClubFormClub",method=RequestMethod.POST)
 	public @ResponseBody String askClubFormClub(String content,Long clubId,HttpServletRequest request)
 	{
@@ -166,12 +180,50 @@ public class ClubController {
 		question.setCreateTime(new Date());
 		question.setIsDeleted(false);
 		questionService.insert(question);
+		
+		
+		//将消息存入redis服务器中
+		//数据结构   key:notification_{要通知的用户Id}   value:jsonObject
+		
+		
+		Map<String, Object>notification=new HashMap<>();
+		Question param=new Question();
+		param.setUserId(userId);
+		param=questionService.selectList(param, "createTime desc").get(0);
+		String username=null;
+		if(user.getNickName().isEmpty()||user.getNickName()==""||user.getNickName()==null)
+		{
+			username=user.getEmail();
+		}
+		else{
+			username=user.getNickName();
+		}
+		notification.put("questionId",param.getId());
+		notification.put("content",username+":"+param.getContent());
+		
+		//找出所有要通知的对象
+		UserClub userClub=new UserClub();
+		userClub.setClubId(param.getClubId());
+		userClub.setStatus("管理员");
+		userClub=userClubService.selectOne(userClub);
+		
+		if(user.getId()!=userClub.getUserId())
+		{
+			//如果发表评论的不是管理员自己,将消息放到消息队列
+			JedisUtils.sadd("notification_"+userClub.getUserId(), JsonObject.toJson(notification));
+		}
 		return JsonObject.toSuccessJson("评论成功");
 		
 	}
 	
 	
-	
+	/**
+	 * 评论用户
+	 * @param content
+	 * @param questionId
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="askUserSubmit",method=RequestMethod.POST)
 	public @ResponseBody String askUserSubmit(String content,Long questionId,HttpServletRequest request){
 		
@@ -193,6 +245,30 @@ public class ClubController {
 		answer.setQuestionId(questionId);
 		answer.setUserId(userId);
 		answerService.insert(answer);
+		
+		Map<String, Object> notification=new HashMap<>();
+		Answer param=new Answer();
+		param.setUserId(userId);
+		param=answerService.selectList(param, "createTime desc").get(0);
+		
+		
+		String username=null;
+		if(user.getNickName()==null)
+		{
+			username=user.getEmail();
+		}
+		else{
+			username=user.getNickName();
+		}
+		notification.put("answerId",param.getId());
+		notification.put("content",username+":"+param.getContent());
+		Question question=new Question();
+		question.setId(param.getQuestionId());
+		question=questionService.selectOne(question);
+		if(userId!=question.getUserId())
+		{
+			JedisUtils.sadd("notification_"+question.getUserId(), JsonObject.toJson(notification));
+		}
 		return JsonObject.toSuccessJson("回复成功");
 		
 	}

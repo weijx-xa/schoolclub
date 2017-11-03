@@ -2,9 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%
-	String path = request.getContextPath();
-%>
 <!doctype html>
 <html>
 <head>
@@ -163,7 +160,8 @@
 	function nextPage(){
 		var pageNum=$("#pageNum").val();
 		var clubId=$("#clubId").val();
-		location.href="<%=path%>/club/detail?pageNum=" + pageNum + "&clubId="+ clubId;
+		var path="${pageContext.request.contextPath}"
+		location.href=path+"/club/detail?pageNum=" + pageNum + "&clubId="+ clubId;
 
 	}
 </script>

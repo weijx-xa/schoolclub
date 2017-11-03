@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
@@ -105,7 +106,10 @@ public class UserController {
 		user.setCreateTime(new Date());
 		user.setIsDeleted(false);
 		userService.insert(user);
-		webUtils.setSession(user);
+		User param=new User();
+		param.setEmail(email);
+		param=userService.selectList(param).get(0);
+		webUtils.setSession(param);
 		ModelAndView modelAndView = new ModelAndView("personInfo");
 		return modelAndView;
 	}
@@ -113,6 +117,15 @@ public class UserController {
 	public ModelAndView personInfo()
 	{
 		ModelAndView modelAndView = new ModelAndView("personInfo");
+		return modelAndView;
+	}
+	
+	@RequestMapping("logout")
+	public ModelAndView logout(HttpServletRequest request)
+	{
+		request.getSession().setAttribute("user",null);
+		request.getSession().invalidate();
+		ModelAndView modelAndView=new ModelAndView("login");
 		return modelAndView;
 	}
 	
