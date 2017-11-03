@@ -4,8 +4,8 @@
         <div id="side">
             <div class="myclub">
                 <dt><a href="#">我的社团</a></dt>
-                    <dd><a href="${pageContext.request.contextPath}/user/joinclub">我加入的社团</a></dd>
-                    <dd><a href="${pageContext.request.contextPath}/user/followclub">我关注的社团</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/user/joinClub">我加入的社团</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/user/followClub">我关注的社团</a></dd>
             </div>
             <div class="myactivity">
                 <dt><a href="${pageContext.request.contextPath}/user/joinAc">我的活动</a></dt>

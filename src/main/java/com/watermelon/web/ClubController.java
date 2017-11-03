@@ -191,7 +191,7 @@ public class ClubController {
 		param.setUserId(userId);
 		param=questionService.selectList(param, "createTime desc").get(0);
 		String username=null;
-		if(user.getNickName().isEmpty()||user.getNickName()==""||user.getNickName()==null)
+		if(user.getNickName()==null||user.getNickName()=="")
 		{
 			username=user.getEmail();
 		}
@@ -209,7 +209,7 @@ public class ClubController {
 		userClub.setStatus("管理员");
 		userClub=userClubService.selectOne(userClub);
 		
-		if(user.getId()!=userClub.getUserId())
+		if(userClub!=null&&user.getId()!=userClub.getUserId())
 		{
 			//如果发表评论的不是管理员自己,将消息放到消息队列
 			JedisUtils.sadd("notification_"+userClub.getUserId(), JsonObject.toJson(notification));
@@ -265,7 +265,7 @@ public class ClubController {
 		notification.put("byName", username);
 		notification.put("byId", user.getId());
 		notification.put("answerId",param.getId());
-		notification.put("content",username+":"+param.getContent());
+		notification.put("content",param.getContent());
 		Question question=new Question();
 		question.setId(param.getQuestionId());
 		question=questionService.selectOne(question);
@@ -276,6 +276,69 @@ public class ClubController {
 		return JsonObject.toSuccessJson("回复成功");
 		
 	}
+	
+	@RequestMapping(value="joinClub",method=RequestMethod.POST)
+	public @ResponseBody String joinClub(Long clubId){
+		User user=(User) webUtils.getSession("user");
+		if(user==null)
+		{
+			return JsonObject.toErrorJson("请先登录");
+		}
+		if(clubId==null)
+		{
+			return JsonObject.toErrorJson("clubId不能为null");
+		}
+		UserClub a=new UserClub();
+		a.setClubId(clubId);
+		a.setIsDeleted(false);
+		a.setStatus("申请");
+		a.setUserId(user.getId());
+		a=userClubService.selectOne(a);
+		if(a!=null)
+		{
+		   return JsonObject.toErrorJson("您已经申请过该社团了，不能重复申请");
+		}
+		
+		
+		UserClub userClub=new UserClub();
+		userClub.setClubId(clubId);
+		userClub.setCreateTime(new Date());
+		userClub.setIsDeleted(false);
+		userClub.setStatus("申请");
+		userClub.setUserId(user.getId());
+		userClubService.insert(userClub);
+		Club club=new Club();
+		club.setId(clubId);
+		club=clubService.selectOne(club);
+		Map<String, Object> notification=new HashMap<>();
+		
+		String username=null;
+		if(user.getNickName()==null)
+		{
+			username=user.getEmail();
+		}
+		else{
+			username=user.getNickName();
+		}
+		notification.put("byName", username);
+		notification.put("byId", user.getId());
+		notification.put("userClubId",userClub.getId());
+		notification.put("content","<a href='/schoolclub/user/clubMessage'>申请加入"+club.getName()+"，请及时处理</a>");
+		//通知对象
+		UserClub param=new UserClub();
+		param.setClubId(clubId);
+		param.setIsDeleted(false);
+		param.setStatus("管理员");
+		param=userClubService.selectOne(param);
+		if(user.getId()!=param.getUserId())
+		{
+			//通知管理员
+			JedisUtils.sadd("notification_"+param.getUserId(), JsonObject.toJson(notification));
+		}
+		
+		return JsonObject.toSuccessJson("申请成功，将在24小时内将告知审批结果");
+	}
+	
 	@RequestMapping("create1")
 	public ModelAndView create1()
 	{

@@ -87,4 +87,24 @@
 			<if test="_parameter!=null and _parameter!=''">and userclub.userId=#{_parameter}</if>
 		</where>
 	</select>
+	
+	
+	
+	<select id="selectSecondListByFirst" parameterType="UserClub" resultType="Club">
+	    select club.id as id,club.name as name,club.property as
+		property,club.count as count,club.description as
+		description,club.number as number,club.faceImage as
+		faceImage,club.logoImage as logoImage,club.createTime as createTime
+		from UserClub as userclub
+		left join club as club on userclub.clubId=club.id
+		<where>
+		userclub.isDeleted=false and club.isDeleted=false
+			<if test="id!=null and id!=''">and userClub.id=#{id}</if>
+			<if test="userId!=null and userId!=''">and userClub.userId=#{userId}</if>
+			<if test="clubId!=null and clubId!=''">and userClub.clubId=#{clubId}</if>
+			<if test="createTime!=null and createTime!=''">and userClub.createTime=#{createTime}</if>
+			<if test="status!=null and status!=''">and userClub.status=#{status}</if>
+			<if test="isDeleted!=null and isDeleted!=''">and userClub.isDeleted=#{isDeleted}</if>
+		</where>
+	</select>
 </mapper>

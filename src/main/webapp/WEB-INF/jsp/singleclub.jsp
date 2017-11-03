@@ -34,6 +34,7 @@
 				"content" : "确认参加 <i>音乐社</i> 吗？",
 				"buttons" : {
 					"确定" : function() {
+						joinClub();
 						onlyChoseAlert.close();
 					}
 				}
@@ -155,6 +156,36 @@
 		});
 	}
 	
+	function joinClub(){
+		var url="${pageContext.request.contextPath}/club/joinClub";
+		var clubId="${club.id}";
+		$.ajax({
+			type:"post",
+			url:url,
+			data:{
+				clubId:clubId
+			},
+			dataType:"json",
+			success:function(data){
+				if(data.status=="true")
+					{
+					
+					}
+				else{
+					alert(data.value);
+					if(data.value=="您已经申请过该社团了，不能重复申请")
+						{
+						location.reload() ;
+						}
+				}
+			},
+			error:function(){
+				alert("服务器出错了，请稍后尝试");
+			}
+			
+		});
+	}
+	
 	
 	
 	function nextPage(){
@@ -180,7 +211,7 @@
 					</div>
 				</div>
 				<div class="text">
-					<span class="follow"><i></i>关注</span> <span class="join">申请加入</span>
+					 <span class="join" >申请加入</span>
 				</div>
 			</div>
 			<div class="info">
@@ -217,7 +248,6 @@
 								<fmt:formatDate value="${activity.beginDateTime }"
 									pattern="yyyy-MM-dd HH:mm:ss" />
 							</p></li>
-
 					</c:forEach>
 				</ul>
 			</div>
@@ -311,8 +341,6 @@
 					<input type="hidden" name="clubId" value="${club.id }" id="clubId" />
 					<input type="hidden" name="pageNum" value="${pageNum+1 }"
 						id="pageNum" />
-
-
 					<button id="nextpage" onclick="nextPage()">下一页</button>
 				</div>
 			</div>

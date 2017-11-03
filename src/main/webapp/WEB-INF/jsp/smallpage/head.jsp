@@ -20,6 +20,7 @@ $(function(){
 	},500);
 });
 var i=1;
+var size=0;
 function getNotifications(){
 	$.ajax({
 		type:"post",
@@ -31,7 +32,8 @@ function getNotifications(){
 					
 				      if(data.value!=null){
 				    	  var audio = "<audio src=\"${pageContext.request.contextPath}/images//source/tips.mp3\" autoplay=\"autoplay\"></audio>";
-	                      if(data.value.number==1)
+				    	  console.log(data.value.number);
+				    	  if(data.value.number==1)
 	                    	  {
 	                    	  $("#audio").html("");
 	                    	   $("#audio").append(audio);
@@ -45,6 +47,8 @@ function getNotifications(){
 	                    	   $("#unprocessedMessageWrapper").html(a);
 	                    	    i=0;
 	                    	   }
+	                       
+	                     size=data.value.list.length;
 				      }
 				}
 				 else {

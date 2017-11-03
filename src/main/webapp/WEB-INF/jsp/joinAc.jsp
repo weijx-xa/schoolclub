@@ -157,7 +157,7 @@
 <div id="content">
     <%@include file="smallpage/sidebar.jsp"%>
     <div id="info">
-        <h3 class="title">我报名的社团</h3>
+        <h3 class="title">我报名的活动</h3>
         <ul>
             <li class="activity">
                 <a href="#"><img src="${pageContext.request.contextPath}/imagesactivity/activity.jpg" style="width:200px;height: 260px;"/></a>

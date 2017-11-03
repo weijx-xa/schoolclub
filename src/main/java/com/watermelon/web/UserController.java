@@ -1,6 +1,7 @@
 package com.watermelon.web;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -20,11 +21,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.watermelon.pojo.Club;
 import com.watermelon.pojo.Question;
 import com.watermelon.pojo.User;
+import com.watermelon.pojo.UserClub;
 import com.watermelon.service.QuestionService;
+import com.watermelon.service.UserClubService;
 import com.watermelon.service.UserService;
+import com.watermelon.utils.CommonUtils;
 import com.watermelon.utils.HttpUtils;
 import com.watermelon.utils.JedisUtils;
 import com.watermelon.utils.JsonObject;
@@ -42,6 +48,9 @@ public class UserController {
 	
 	@Autowired
 	private QuestionService questionService;
+	
+	@Autowired
+	private UserClubService userClubService;
 
 	@RequestMapping("/login")
 	public ModelAndView Login() {
@@ -149,8 +158,37 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/joinClub", method = RequestMethod.GET)
-	public ModelAndView joinClub(User user) {
+	public ModelAndView joinClub(Integer pageNum) {
+		User user=(User) webUtils.getSession("user");
+		if(user==null)
+		{
+			ModelAndView modelAndView = new ModelAndView("login");
+			modelAndView.addObject("message", "未登录");
+			return modelAndView;
+		}
+		if(pageNum==null)
+		{
+			pageNum=1;
+		}
+
+		
+		//找出成员
+		UserClub b=new UserClub();
+		b.setUserId(user.getId());
+		b.setIsDeleted(false);
+		b.setStatus("成员");
+		List<Club>bList= userClubService.selectSecondListByFirst(b);
+		
+		
+		UserClub a=new UserClub();
+		a.setUserId(user.getId());
+		a.setIsDeleted(false);
+		a.setStatus("管理员");
+		List<Club>aList= userClubService.selectSecondListByFirst(a);
+		
+		List<Club>clubList=CommonUtils.setUnion(aList, bList);
 		ModelAndView modelAndView = new ModelAndView("joinClub");
+		modelAndView.addObject("clubList",clubList);
 		return modelAndView;
 	}
 
@@ -204,7 +242,6 @@ public class UserController {
 			pageNum=1;
 		}
 		//查找当前用户收到的普通消息
-		Long userId=user.getId();
 		Set<String> datas = JedisUtils.smembers("notification_" + user.getId());
 		if (datas == null || datas.size() < 1) {
 			return JsonObject.toSuccessJson(null);
