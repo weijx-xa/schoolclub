@@ -31,7 +31,7 @@
 	position: absolute;
 	width:150px;
 	height:40px;
-    border: 1px solid red;
+
 	right:0;
 	background-color:#f7fbfd;
 	top:30px;
@@ -45,7 +45,7 @@
 	height:40px;
 	text-align: center;
 	line-height: 40px;
-	background: #FFFFFF;
+	background: transparent;
 	color: #111111;
 }
 #nav {

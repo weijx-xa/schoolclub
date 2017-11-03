@@ -126,7 +126,7 @@ public class ClubController {
 			Answer answer=new Answer();
 			answer.setQuestionId(questionId);
 			answer.setIsDeleted(false);
-			List<Answer>answerList=answerService.selectList(answer, "createTime desc");
+			List<Answer>answerList=answerService.page(1, 3,answer, "createTime desc").getList();
 			question.setAnswerList(answerList);
 		}
 		return pageInfo;

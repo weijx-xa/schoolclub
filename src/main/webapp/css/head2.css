@@ -31,12 +31,12 @@
     position: absolute;
     width:150px;
     height:40px;
-//    border: 1px solid red;
+
     right:0;
     top:30px;
- //  border: 1px solid #4D4D4D;
+
     border-top: none;
-    background: #FFFFFF;
+    background: transparent;
   //  display: none;
 }
 #unprocessedMessageWrapper a{
