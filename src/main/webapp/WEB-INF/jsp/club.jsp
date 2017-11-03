@@ -166,6 +166,7 @@
                 	  var currData=result.value.list[i];
                 	  try
                 	  {
+                		  $(this).show();
                 		  currData.id
                 	  }
                 	  catch(e){
