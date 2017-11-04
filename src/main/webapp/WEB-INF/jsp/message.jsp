@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	String path = request.getContextPath();
-%>
 <!DOCTYPE html>
 
 <html>
@@ -19,8 +16,51 @@
 <script src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
 <script src="${pageContext.request.contextPath}/js/laypage/laypage.js" language="javascript" type="text/javascript"></script>
 <script>
+
+
+function askUserSubmit(obj){
+	var askClubForm=$(obj).parent("#askUserSubmit");
+	var url=askClubForm["0"].action;
+	var data=askClubForm.serialize();
+	
+	$.ajax({
+		type:"post",
+		url:url,
+		data:data,
+		dataType:"json",
+		success:function(data){
+			if(data.status=="true")
+				{
+				location.reload() ;
+				}
+			else{
+				alert(data.value);
+			}
+		},
+		error:function(){
+			alert("服务器出错了，请稍后尝试");
+		}
+		
+	});
+}
+
+
+   function showReply(obj){
+
+	   
+
+		  $(obj).parent().next().css("display","block");
+	
+
+	  
+   }
+
+
  	//单次单选弹框
 	$(function () {
+		
+
+		
 	$(".userName").click(
 					function() {
 						var onlyChoseAlert = simpleAlert({
@@ -39,18 +79,18 @@
 					})
 	}) 
 	$(function(){
-	    $(".replyButton").click(function(){
-	        var focus = $(this).parents("ul li").find(".replyArea");
-	        if(focus.css("display")=="none")
-	        {
-	            focus.show();
-	            this.innerHTML = "收起";
-	        }else
-	        {
-	            focus.hide();
-	            this.innerHTML = "回复";
-	        }
-	    });
+//	    $(".replyButton").click(function(){
+//	        var focus = $(this).parents("ul li").find(".replyArea");
+//	        if(focus.css("display")=="none")
+//	        {
+//	            focus.show();
+//	            this.innerHTML = "收起";
+//	        }else
+//	        {
+//	            focus.hide();
+//	            this.innerHTML = "回复";
+//	        }
+//	    });
 	});
 </script>
 </head>
@@ -62,7 +102,7 @@
 				style="width: 180px; height: 80px">
 		</div>
 		<ul id="navilist">
-			<li><a href="${pageContext.request.contextPath}/user/message">@你</a></li>
+			<li><a href="${pageContext.request.contextPath}/user/message">@我</a></li>
 			<li>
 			<p>
 				<a href="${pageContext.request.contextPath}/user/clubMessage">社团消息</a>
@@ -113,6 +153,7 @@
                          var userId=data.byId;
                          var username=data.byName;             
                          var content=data.content;
+                             
                          var str="";
                        if(data.questionId!=null)
                     	   {
@@ -123,18 +164,19 @@
                			var p2="</p>";	
                			var div2="</div>";
                			var div3="<div class=\"handleButton\">";
-              			var button1="<button class=\"replyButton\">回复</button>";
-              			var button2="<button class=\"readButton\">已读</button>";
+              			var button1="<button class=\"replyButton\" onclick='showReply(this)'>回复</button>";
+              			var button2="<button class=\"readButton\" onclick='$(this).parent().parent().remove()' >已读</button>";
                			var div4="</div>";
                			var div5="<div class=\"replyArea\">";
-               			var form1="<form action=\"\">"
-               			var textarea1="<textarea class=\"replyTextarea\">";
+               			var form1="<form  id=\"askClubFormClub\"  onsubmit=\"event.preventDefault();\" action=\"<%=path%>/club/askUserSubmit\">";
+               			var textarea1="<textarea class=\"replyTextarea\"   name='content'>";
                			var textarea2="</textarea>";
-               			var input1="<input type=\"submit\" class=\"replysubmit\" value=\"提交评论\" />";
+               		 var input="<input type='hidden' name='questionId' value="+data.questionId+">"
+               			var input1="<input type=\"submit\" class=\"replysubmit\"   onclick='askUserSubmit(this)' value=\"提交评论\" />";
                			var form2="</form>";
                			var div6="</div>";
                			var li2="</li>";
-               			str+=(li1+div1+p1+a+p2+div2+div3+button1+button2+div4+div5+form1+textarea1+textarea2+input1+form2+div6+li2);
+               			str+=(li1+div1+p1+a+p2+div2+div3+button1+button2+div4+div5+form1+input+textarea1+textarea2+input1+form2+div6+li2);
                     	   }
                        else{
                     	   var	 li1="	<li class=\"list\">";
@@ -144,20 +186,22 @@
                   			var p2="</p>";	
                   			var div2="</div>";
                   			var div3="<div class=\"handleButton\">";
-                  			var button1="<button class=\"replyButton\">回复</button>";
-                  			var button2="<button class=\"readButton\">已读</button>";
+                  			var button1="<button class=\"replyButton\" onclick='showReply(this)' >回复</button>";
+                  			var button2="<button class=\"readButton\"  onclick='$(this).parent().parent().remove()' >已读</button>";
                   			var div4="</div>";
                   			var div5="<div class=\"replyArea\">";
-                   			var form1="<form action=\"\">"
-                   			var textarea1="<textarea class=\"replyTextarea\">";
+                  			var form1="<form id=\"askUserSubmit\"  onsubmit=\"event.preventDefault();\" action=\"<%=path%>/club/askUserSubmit\">";
+                  			   var input="<input type='hidden' name='answerId' value="+data.answerId+">"
+                  				var textarea1="<textarea class=\"replyTextarea\"   name='content'>";
                    			var textarea2="</textarea>";
-                   			var input1="<input type=\"submit\" class=\"replysubmit\" value=\"提交评论\" />";
+                   			var input1="<input type=\"submit\" class=\"replysubmit\"  onclick='askUserSubmit(this)'value=\"提交评论\" />";
                    			var form2="</form>";
                    			var div6="</div>";
                   			var li2="</li>";
-                  			str+=(li1+div1+p1+a+p2+div2+div3+button1+button2+div4+div5+form1+textarea1+textarea2+input1+form2+div6+li2);
+                  			str+=(li1+div1+p1+a+p2+div2+div3+button1+button2+div4+div5+form1+input+textarea1+textarea2+input1+form2+div6+li2);
                        }
                       $("#messageList").append(str);
+
             		}
                 },'json'
             );
@@ -165,6 +209,10 @@
 
         ajaxPage();//需要主动调用一次此函数
         
+      
+       
+   
+     
         
     </script>
     <div id=delMessage>

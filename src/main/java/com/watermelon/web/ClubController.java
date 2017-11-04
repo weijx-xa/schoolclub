@@ -154,7 +154,7 @@ public class ClubController {
 	 * @return
 	 */
 	@RequestMapping(value="askClubFormClub",method=RequestMethod.POST)
-	public @ResponseBody String askClubFormClub(String content,Long clubId,HttpServletRequest request)
+	public @ResponseBody String askClubFormClub(String content,Long clubId,Long questionId,HttpServletRequest request)
 	{
 		User user=(User) webUtils.getSession("user");
 		if(user==null)
@@ -162,6 +162,12 @@ public class ClubController {
 			return JsonObject.toErrorJson("请先登录");
 		}
 		Long userId=user.getId();
+		if(questionId!=null)
+		{
+			Question quesiton=new Question();
+			quesiton.setId(questionId);
+			clubId=questionService.selectOne(quesiton).getClubId();
+		}
 		
 		if(clubId==null||StringUtils.isEmpty(content))
 		{
@@ -227,7 +233,7 @@ public class ClubController {
 	 * @return
 	 */
 	@RequestMapping(value="askUserSubmit",method=RequestMethod.POST)
-	public @ResponseBody String askUserSubmit(String content,Long questionId,HttpServletRequest request){
+	public @ResponseBody String askUserSubmit(String content,Long answerId,Long questionId,HttpServletRequest request){
 		
 		User user=(User) webUtils.getSession("user");
 		if(user==null)
@@ -235,7 +241,7 @@ public class ClubController {
 			return JsonObject.toErrorJson("请先登录");
 		}
 		Long userId=user.getId();
-		if(questionId==null||"".equals(content))
+		if("".equals(content))
 		{
 			return JsonObject.toErrorJson("数据不能为null");
 		}
@@ -245,10 +251,12 @@ public class ClubController {
 		answer.setCreateTime(new Date());
 		answer.setIsDeleted(false);
 		answer.setQuestionId(questionId);
+		answer.setParentId(answerId);
 		answer.setUserId(userId);
 		answerService.insert(answer);
 		
 		Map<String, Object> notification=new HashMap<>();
+		//刚刚插入的消息
 		Answer param=new Answer();
 		param.setUserId(userId);
 		param=answerService.selectList(param, "createTime desc").get(0);
@@ -269,9 +277,16 @@ public class ClubController {
 		Question question=new Question();
 		question.setId(param.getQuestionId());
 		question=questionService.selectOne(question);
-		if(userId!=question.getUserId())
+		if(userId!=question.getUserId()&&questionId!=null)
 		{
 			JedisUtils.sadd("notification_"+question.getUserId(), JsonObject.toJson(notification));
+		}
+		if(answerId!=null)
+		{
+			Answer a=new Answer();
+			a.setId(answerId);
+			a=answerService.selectList(a).get(0);
+			JedisUtils.sadd("notification_"+a.getUserId(), JsonObject.toJson(notification));
 		}
 		return JsonObject.toSuccessJson("回复成功");
 		
@@ -323,7 +338,7 @@ public class ClubController {
 		notification.put("byName", username);
 		notification.put("byId", user.getId());
 		notification.put("userClubId",userClub.getId());
-		notification.put("content","<a href='/schoolclub/user/clubMessage'>申请加入"+club.getName()+"，请及时处理</a>");
+		notification.put("content","<a  href='/schoolclub/user/clubMessage'>申请加入"+club.getName()+"，请及时处理</a>");
 		//通知对象
 		UserClub param=new UserClub();
 		param.setClubId(clubId);
